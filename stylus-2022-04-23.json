@@ -1,0 +1,187 @@
+[
+  {
+    "settings": {
+      "openEditInWindow": false,
+      "openEditInWindow.popup": false,
+      "windowPosition": {},
+      "show-badge": true,
+      "disableAll": false,
+      "exposeIframes": false,
+      "newStyleAsUsercss": false,
+      "styleViaXhr": false,
+      "patchCsp": false,
+      "config.autosave": true,
+      "popup.breadcrumbs": true,
+      "popup.breadcrumbs.usePath": false,
+      "popup.enabledFirst": true,
+      "popup.stylesFirst": true,
+      "popup.autoResort": false,
+      "popup.borders": false,
+      "popup.findStylesInline": true,
+      "popup.findSort": "u",
+      "manage.onlyEnabled": false,
+      "manage.onlyLocal": false,
+      "manage.onlyUsercss": false,
+      "manage.onlyEnabled.invert": false,
+      "manage.onlyLocal.invert": false,
+      "manage.onlyUsercss.invert": false,
+      "manage.actions.expanded": true,
+      "manage.backup.expanded": true,
+      "manage.filters.expanded": false,
+      "manage.newUI": false,
+      "manage.newUI.favicons": false,
+      "manage.newUI.faviconsGray": true,
+      "manage.newUI.targets": 3,
+      "manage.newUI.sort": "title,asc",
+      "editor.options": {},
+      "editor.toc.expanded": true,
+      "editor.options.expanded": true,
+      "editor.lint.expanded": true,
+      "editor.publish.expanded": true,
+      "editor.lineWrapping": true,
+      "editor.smartIndent": true,
+      "editor.indentWithTabs": false,
+      "editor.tabSize": 4,
+      "editor.keyMap": "default",
+      "editor.theme": "default",
+      "editor.beautify": {
+        "selector_separator_newline": true,
+        "newline_before_open_brace": false,
+        "newline_after_open_brace": true,
+        "newline_between_properties": true,
+        "newline_before_close_brace": true,
+        "newline_between_rules": false,
+        "preserve_newlines": true,
+        "end_with_newline": false,
+        "indent_conditional": true
+      },
+      "editor.beautify.hotkey": "",
+      "editor.lintDelay": 300,
+      "editor.linter": "csslint",
+      "editor.lintReportDelay": 500,
+      "editor.matchHighlight": "token",
+      "editor.autoCloseBrackets": true,
+      "editor.autocompleteOnTyping": false,
+      "editor.contextDelete": null,
+      "editor.selectByTokens": true,
+      "editor.appliesToLineWidget": true,
+      "editor.livePreview": true,
+      "editor.colorpicker": true,
+      "editor.colorpicker.hexUppercase": false,
+      "editor.colorpicker.hotkey": "",
+      "editor.colorpicker.color": "#618e36",
+      "editor.colorpicker.maxHeight": 300,
+      "hotkey._execute_browser_action": "",
+      "hotkey.openManage": "",
+      "hotkey.styleDisableAll": "",
+      "sync.enabled": "none",
+      "iconset": 0,
+      "badgeDisabled": "#8B0000",
+      "badgeNormal": "#006666",
+      "popupWidth": 246,
+      "updateInterval": 24
+    }
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1650122948797,
+    "name": "Medium.com",
+    "sections": [
+      {
+        "code": "div.pw-highlight-menu {\n    display: none;\n}\n\ndiv.cf.ml.o.dd.mm.th.ti,\ndiv.dc.ng.o.dz.nh.td.te {\n    display: none;\n}\n\n",
+        "domains": [
+          "medium.com"
+        ]
+      }
+    ],
+    "updateDate": 1650573928508,
+    "_id": "e7055f06-1f18-4b61-9d2b-e2440cec6f4c",
+    "_rev": 1650615807630,
+    "_usw": {},
+    "id": 2
+  },
+  {
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1650085047781,
+    "name": "Double Click/Tap to Google Translate",
+    "sections": [
+      {
+        "code": "\n\n\n\nspan.klonDiziCumleSPAN {\n    color:  hsl(48, 59%, 39%) !important;\n    display: inline-block;\n    cursor: pointer;\n    \n}\nspan.klonDiziCumleSPAN::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n}\nspan.klonDiziCumleSPANklonCeviri {\n    color:  hsl(91, 35%, 38%) !important;\n    display: inline-block;\n    margin-top: 8px;\n}\n",
+        "urlPrefixes": [
+          "http"
+        ]
+      }
+    ],
+    "updateDate": 1650364913644,
+    "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
+    "_rev": 1650615807630,
+    "id": 3,
+    "_usw": {}
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1647426711459,
+    "name": "ImTranslator",
+    "sections": [
+      {
+        "code": "\n.im-inliner-dst-text .im-inliner-br-bottom{\n    margin-bottom:20px !important;\n}"
+      }
+    ],
+    "updateDate": 1647426822982,
+    "_id": "72e24c7d-8527-4c0e-a779-262dc2360dc9",
+    "_rev": 1650615807631,
+    "_usw": {},
+    "id": 6
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1650085047781,
+    "name": "Double Click/Tap to Google Translate v2",
+    "sections": [
+      {
+        "code": "\n\n\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n}\nspan.clickedElementDiziCumle {\n    color:  hsl(48, 59%, 39%) !important;\n    display: inline-block;\n    cursor: pointer;\n    \n}\nspan.clickedElementDiziCeviri {\n    color:  hsl(91, 35%, 38%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n}\n",
+        "urlPrefixes": [
+          "http"
+        ]
+      }
+    ],
+    "updateDate": 1650553372588,
+    "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
+    "_rev": 1650632813983,
+    "_usw": {},
+    "id": 7
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1650612199945,
+    "name": "Websites for Translate",
+    "sections": [
+      {
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\nform#srchfrm {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(50%);\n    aaafilter: grayscale(50%);\n    opacity: .5;\n}\np > a {\n    opacity: .5;\n}",
+        "domains": [
+          "msn.com"
+        ]
+      },
+      {
+        "code": "/*██████   Medium.com   ██████*/",
+        "domains": [
+          "medium.com"
+        ]
+      }
+    ],
+    "updateDate": 1650632551373,
+    "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
+    "_rev": 1650632813983,
+    "id": 8,
+    "_usw": {}
+  }
+]

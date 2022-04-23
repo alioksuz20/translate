@@ -44,7 +44,7 @@ $(document).ready(function() {
         }
     }, 50);
 
-    // Her hâlükârda 10 saniye sonra VarMisinYokMusun1 İPTAL ET, butonu arama.
+    // Her hâlükârda 10 saniye sonra VarMisinYokMusun1 i İPTAL ET, butonu arama.
     var myTimeOut1 = setTimeout(function () {
         clearInterval(VarMisinYokMusun1);
         console.log("VarMisinYokMusun1 İPTAL EDİLDİ!..");

@@ -11,7 +11,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // @run-at       document-end
 
-// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Websites for Translate v1.0.js
+// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Websites%20for%20Translate%20v1.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 

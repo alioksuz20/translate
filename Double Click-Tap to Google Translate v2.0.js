@@ -10,7 +10,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // @require      https://rawgit.com/ngryman/jquery.finger/v0.1.2/dist/jquery.finger.js
 
-// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double Click-Tap to Google Translate v2.0.js
+// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 

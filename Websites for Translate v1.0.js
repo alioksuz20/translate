@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.01
+// @version      1.02
 // @description  MSN.com, Medium.com
 // @author       You
 

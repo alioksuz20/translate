@@ -11,10 +11,14 @@
 // @require      https://rawgit.com/ngryman/jquery.finger/v0.1.2/dist/jquery.finger.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
-// @grant        none
+
+// @grant        GM_addStyle
+// @grant        GM_getResourceText
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_setClipboard
+
 // ==/UserScript==
-
-
 
 //----------------------------------------------
 /*!
@@ -424,10 +428,12 @@ $(document).ready(function () {
                 // Nihayet çevirimizi Google Translate e yaptıralım:
 
                 // Yukarıda tanımladığımız "jQuery Google Translate API 2.0 plugin" için parametrelerimizi tanımlayalım, API key imizi girelim:
+
+                var apikey = sessionStorage.getItem("gtAPIkey")
+
                 $.translate = {
                     // key : 'Enter google translate API key here',
-                    key: 'AIzaSyD-7uWTjTodZba7ky7mgfSgnVxAX_opoh8', // from this link= https://gtranslate.io/forum/google-translate-api-key-t190.html
-                    // key : 'AIzaSyAp2DclXqzAH2zR--HEv0i7gZgVImvxRMg', //Benimki
+                    key: apikey,
                     source: 'en'
                 };
 
@@ -515,13 +521,7 @@ $(document).ready(function () {
 
 
 
-
-
-
-
 });
-
-
 
 
 

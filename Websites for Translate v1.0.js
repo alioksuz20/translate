@@ -12,7 +12,13 @@
 // @run-at       document-end
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
-// @grant        none
+
+// @grant        GM_addStyle
+// @grant        GM_getResourceText
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_setClipboard
+
 // ==/UserScript==
 
 $(document).ready(function() {

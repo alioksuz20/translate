@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.01
+// @version      2.0
 // @description  try to take over the world!
 // @author       You
 
@@ -10,17 +10,11 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // @require      https://rawgit.com/ngryman/jquery.finger/v0.1.2/dist/jquery.finger.js
 
-// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
-
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
-
-// @grant        GM_addStyle
-// @grant        GM_getResourceText
-// @grant        GM_getValue
-// @grant        GM_setValue
-// @grant        GM_setClipboard
-
+// @grant        none
 // ==/UserScript==
+
+
 
 //----------------------------------------------
 /*!
@@ -201,11 +195,34 @@ $(document).ready(function () {
             original.replaceWith(clone);
         });
     }, 1000);
-
+    /*
     $("body").on("dblclick", "span.storyimage img.loaded", function (e) {
         $(this).parents('span.storyimage').remove();
         // $(this).remove();
     });
+
+*/
+
+
+    $('body').on('press', 'span.storyimage img.loaded', function(e) {
+        e.preventDefault();
+        if ('horizontal' == e.orientation) {
+            if (1 == e.direction) {
+                //$(this).addClass('is-opened');
+                alert("saga");
+            }
+            else {
+                //$(this).removeClass('is-opened');
+                alert("sola");
+                if($(e.target).is('img')){
+                    $(e.target).remove();
+                }
+                // $(this).remove();
+            }
+        }
+    });
+
+
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
@@ -299,9 +316,9 @@ $(document).ready(function () {
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
     // Bir kelimenin üstüne çift tıklayarak Parent ını seçelim. Kelimeden paragraf seçme gibi...
-    $("body").on("dblclick", function (e) {
+    $("body").on("dblclick", function (x) {
 
-        if ($(e.target).is(".clickedElementDiziCumle") || $(e.target).is(".clickedElementDiziCeviri")) {
+        if ($(x.target).is(".clickedElementDiziCumle") || $(x.target).is(".clickedElementDiziCeviri")) {
             // not stuff in here
             console.log(".clickedElementDiziCumle veya .clickedElementDiziCeviri OLAN bir öğeye çift tıkladınız, Bunlar tekrar kullanılamaz. ÇEVİRİ İPTAL");
         } else {
@@ -325,7 +342,7 @@ $(document).ready(function () {
             // jQuery("<a>").tagName(); //==> "A"
             // jQuery("<h1>").tagName(); //==> "H1"
 
-            var clickedElement = $(e.target);
+            var clickedElement = $(x.target);
             var clickedElementTagName = clickedElement.prop("tagName");
             console.log("Çift tıklanan öğe: " + clickedElementTagName);
 
@@ -430,12 +447,10 @@ $(document).ready(function () {
                 // Nihayet çevirimizi Google Translate e yaptıralım:
 
                 // Yukarıda tanımladığımız "jQuery Google Translate API 2.0 plugin" için parametrelerimizi tanımlayalım, API key imizi girelim:
-
-                var apikey = sessionStorage.getItem("gtAPIkey")
-
                 $.translate = {
                     // key : 'Enter google translate API key here',
-                    key: apikey,
+                    key: 'AIzaSyD-7uWTjTodZba7ky7mgfSgnVxAX_opoh8', // from this link= https://gtranslate.io/forum/google-translate-api-key-t190.html
+                    // key : 'AIzaSyAp2DclXqzAH2zR--HEv0i7gZgVImvxRMg', //Benimki
                     source: 'en'
                 };
 

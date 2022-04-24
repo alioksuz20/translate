@@ -41,7 +41,7 @@ $(document).ready(function () {
             original.replaceWith(clone);
         });
 
-        $("body").on("click", function(z) {
+        $("img").on("click", function(z) {
 
             $("img").swipe( function(direction) { // "left", "upleft", "up", "upright", "right", "downright", "down" or "downleft".
                 // your handler code
@@ -53,12 +53,15 @@ $(document).ready(function () {
 
                 if (direction=="left") {
                     console.log(direction);
-                    swipedElement.parents('span.storyimage').parent().hide();
+                    swipedElement.parents('span.storyimage').hide();
+
                 }
 
                 //direction.preventDefault;
 
             }, { preventDefault: true, mouse: true, pen: true, distance: 50});
+
+            z.preventDefault;
 
         });
 

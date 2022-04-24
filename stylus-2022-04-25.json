@@ -166,21 +166,16 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .5;\n}",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .5;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}",
         "domains": [
-          "msn.com"
-        ]
-      },
-      {
-        "code": "/*██████   Medium.com   ██████*/",
-        "domains": [
-          "medium.com"
+          "msn.com",
+          "cnbc.com"
         ]
       }
     ],
-    "updateDate": 1650837900931,
+    "updateDate": 1650844455959,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1650837900931,
+    "_rev": 1650844455959,
     "id": 8,
     "_usw": {}
   }

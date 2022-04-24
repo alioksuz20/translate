@@ -7,9 +7,9 @@
 
 // @match        *://*/*
 
-/// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 
-// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js
+/// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js
 
 // @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
 // @require      https://ngryman.sh/jquery.finger/libs/plugins.js
@@ -36,7 +36,10 @@ $(document).ready(function () {
 
         // $("img").contents().unwrap();
 
-
+        
+        $('div.providerInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.viewsHeaderInfoLeft-DS-EntryPoint1-1'));
+        $('div.viewsInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.providerInfo'));
+        $("msnews-views-title").remove();
 
         $("img").each(function () {
             var original, clone;
@@ -52,13 +55,7 @@ $(document).ready(function () {
         // tap, img, press, drag
         $('body').on('drag', 'img',function(e) {
             //console.log(this, e);
-            if ('horizontal' == e.orientation) {
-                if (-1 == e.direction) { //left
-                    $(this).hide();
-                } else { //right
-                    $(this).remove();
-                }
-            }
+            $(this).hide();
         });
 
         //****************************************************

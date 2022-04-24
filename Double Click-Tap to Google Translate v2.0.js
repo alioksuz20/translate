@@ -1,23 +1,22 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.08
+// @version      2.09
 // @description  try to take over the world!
 // @author       You
 
 // @match        *://*/*
 
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+// @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
 
 /// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js
-
-// @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
-// @require      https://ngryman.sh/jquery.finger/libs/plugins.js
-// @require      https://ngryman.sh/jquery.finger/libs/prism.min.js
-// @require      https://ngryman.sh/jquery.finger/app.js
+/// @require      https://ngryman.sh/jquery.finger/libs/plugins.js
+/// @require      https://ngryman.sh/jquery.finger/libs/prism.min.js
+/// @require      https://ngryman.sh/jquery.finger/app.js
 
 
-/// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
+// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 // @grant        none

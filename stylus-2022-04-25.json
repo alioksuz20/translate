@@ -166,7 +166,7 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(50%);\n    aaafilter: grayscale(50%);\n    opacity: .5;\n}\np > a {\n    opacity: .5;\n}",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .5;\n}",
         "domains": [
           "msn.com"
         ]
@@ -178,9 +178,9 @@
         ]
       }
     ],
-    "updateDate": 1650783328741,
+    "updateDate": 1650837900931,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1650783328741,
+    "_rev": 1650837900931,
     "id": 8,
     "_usw": {}
   }

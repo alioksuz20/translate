@@ -53,11 +53,12 @@ $(document).ready(function () {
             console.log(this, e);
             if ('horizontal' == e.orientation) {
                 if (-1 == e.direction) { // left
-                    $(this).remove();
+                    $(this).parents("div[id^='ArticleBody-InlineImage']").remove(); // CNBC
+                    $(this).remove(); // Bunu sona koyalım
                 }
                 else { // right
                     //Galeri ise
-                    $(this).parents("div[class^='gallery_carouselContainer']").remove();
+                    $(this).parents("div[class^='gallery_carouselContainer']").remove(); // MSN
 
                 }
             }

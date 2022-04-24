@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.07
+// @version      2.08
 // @description  try to take over the world!
 // @author       You
 
@@ -9,16 +9,19 @@
 
 /// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 
-// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js
-// @require      https://raw.githubusercontent.com/alioksuz20/translate/main/swipe.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js
+
+// @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
+// @require      https://ngryman.sh/jquery.finger/libs/plugins.js
+// @require      https://ngryman.sh/jquery.finger/libs/prism.min.js
+// @require      https://ngryman.sh/jquery.finger/app.js
 
 
-// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
+/// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 // @grant        none
 // ==/UserScript==
-
 
 
 
@@ -33,6 +36,8 @@ $(document).ready(function () {
 
         // $("img").contents().unwrap();
 
+
+
         $("img").each(function () {
             var original, clone;
             // element with id my-div and its child nodes have some event-handlers
@@ -42,55 +47,25 @@ $(document).ready(function () {
             original.replaceWith(clone);
         });
 
+        //****************************************************
 
+        // tap, img, press, drag
+        $('body').on('drag', 'img',function(e) {
+            //console.log(this, e);
+            $(this).hide();
+        });
 
         //****************************************************
 
-        //$("img").on("click", function(z) {
-
-        $("img").on("swipeleft", function(direction) { // "left", "upleft", "up", "upright", "right", "downright", "down" or "downleft".
-            // your handler code
-
-            console.log($(z.target));
-            var swipedElement = $(z.target);
-            var swipedElementTagName = swipedElement.prop("tagName");
-            alert("Fiskelenen öğe: " + swipedElementTagName);
-
-            //if (direction=="left") {
-            //console.log(direction);
-            swipedElement.parents('span.storyimage').hide();
-
-            //}
-
-            //direction.preventDefault;
-
+        // tap, img, press, drag
+        $('video').on('drag', 'img',function(e) {
+            //console.log(this, e);
+            $(this).hide();
         });
-
-        // z.preventDefault;
-
-        //});
 
         //****************************************************
-
-        $("body").onSwipe(function(results){
-            if(results.up == true)
-                alert("Up")
-            if(results.right == true)
-                alert("Right")
-            if(results.down == true)
-                alert("Down")
-            if(results.left == true)
-                alert("Left")
-        });
-
-
 
     }, 1000);
-
-
-
-
-
 
     /*
     $("body").on("dblclick", "span.storyimage img.loaded", function (e) {
@@ -98,14 +73,6 @@ $(document).ready(function () {
         // $(this).remove();
     });
     */
-
-
-
-
-
-
-
-
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 

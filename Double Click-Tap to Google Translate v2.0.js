@@ -8,10 +8,10 @@
 // @match        *://*/*
 
 /// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+
 // @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // @require      https://raw.githubusercontent.com/alioksuz20/translate/main/swipe.js
 
-/// @require      https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js
 
 // @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
@@ -42,6 +42,10 @@ $(document).ready(function () {
             original.replaceWith(clone);
         });
 
+
+
+        //****************************************************
+
         //$("img").on("click", function(z) {
 
         $("img").on("swipeleft", function(direction) { // "left", "upleft", "up", "upright", "right", "downright", "down" or "downleft".
@@ -65,6 +69,8 @@ $(document).ready(function () {
         // z.preventDefault;
 
         //});
+
+        //****************************************************
 
         $("body").onSwipe(function(results){
             if(results.up == true)
@@ -325,11 +331,12 @@ $(document).ready(function () {
                 //++++++++++++++++++++++++++++++++++++++++++++++++++
                 // Nihayet çevirimizi Google Translate e yaptıralım:
 
+                var apikey = sessionStorage.getItem("gtAPIkey");
+
                 // Yukarıda tanımladığımız "jQuery Google Translate API 2.0 plugin" için parametrelerimizi tanımlayalım, API key imizi girelim:
                 $.translate = {
                     // key : 'Enter google translate API key here',
-                    key: 'AIzaSyD-7uWTjTodZba7ky7mgfSgnVxAX_opoh8', // from this link= https://gtranslate.io/forum/google-translate-api-key-t190.html
-                    // key : 'AIzaSyAp2DclXqzAH2zR--HEv0i7gZgVImvxRMg', //Benimki
+                    key: apikey,
                     source: 'en'
                 };
 

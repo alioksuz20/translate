@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.09
+// @version      2.08
 // @description  try to take over the world!
 // @author       You
 
@@ -16,7 +16,7 @@
 /// @require      https://ngryman.sh/jquery.finger/app.js
 
 
-// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
+/// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 // @grant        none
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
         // $("img").contents().unwrap();
 
-        
+
         $('div.providerInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.viewsHeaderInfoLeft-DS-EntryPoint1-1'));
         $('div.viewsInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.providerInfo'));
         $("msnews-views-title").remove();
@@ -51,18 +51,17 @@ $(document).ready(function () {
 
         //****************************************************
 
-        // tap, img, press, drag
-        $('body').on('drag', 'img',function(e) {
+        // | tap | doubletap | press | drag | flick | (flick not working!)
+        $('body').on('drag', 'img, video',function(e) {
             //console.log(this, e);
-            $(this).hide();
-        });
-
-        //****************************************************
-
-        // tap, img, press, drag
-        $('video').on('drag', 'img',function(e) {
-            //console.log(this, e);
-            $(this).hide();
+            if ('horizontal' == e.orientation) {
+                if (-1 == e.direction) { // left
+                    $(this).hide();
+                }
+                else { // right
+                    $(this).remove();
+                }
+            }
         });
 
         //****************************************************

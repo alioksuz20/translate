@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.08
+// @version      2.10
 // @description  try to take over the world!
 // @author       You
 
@@ -10,13 +10,7 @@
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
 
-/// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js
-/// @require      https://ngryman.sh/jquery.finger/libs/plugins.js
-/// @require      https://ngryman.sh/jquery.finger/libs/prism.min.js
-/// @require      https://ngryman.sh/jquery.finger/app.js
-
-
-/// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
+// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 // @grant        none
@@ -35,10 +29,13 @@ $(document).ready(function () {
 
         // $("img").contents().unwrap();
 
+        // Başlığın shadowRoot una erişip içindeki iki div i dışarı çıkardıktan sonra shadowRoot u silelim:
+        if ($('msnews-views-title').length) {
+            $('div.providerInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.viewsHeaderInfoLeft-DS-EntryPoint1-1'));
+            $('div.viewsInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.providerInfo'));
+            $("msnews-views-title").remove();
+        }
 
-        $('div.providerInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.viewsHeaderInfoLeft-DS-EntryPoint1-1'));
-        $('div.viewsInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.providerInfo'));
-        $("msnews-views-title").remove();
 
         $("img").each(function () {
             var original, clone;
@@ -53,13 +50,15 @@ $(document).ready(function () {
 
         // | tap | doubletap | press | drag | flick | (flick not working!)
         $('body').on('drag', 'img, video',function(e) {
-            //console.log(this, e);
+            console.log(this, e);
             if ('horizontal' == e.orientation) {
                 if (-1 == e.direction) { // left
-                    $(this).hide();
+                    $(this).remove();
                 }
                 else { // right
-                    $(this).remove();
+                    //Galeri ise
+                    $(this).parents("div[class^='gallery_carouselContainer']").remove();
+
                 }
             }
         });

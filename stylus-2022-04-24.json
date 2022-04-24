@@ -27,7 +27,7 @@
       "manage.onlyUsercss.invert": false,
       "manage.actions.expanded": true,
       "manage.backup.expanded": true,
-      "manage.filters.expanded": false,
+      "manage.filters.expanded": true,
       "manage.newUI": false,
       "manage.newUI.favicons": false,
       "manage.newUI.faviconsGray": true,
@@ -98,7 +98,7 @@
     ],
     "updateDate": 1650573928508,
     "_id": "e7055f06-1f18-4b61-9d2b-e2440cec6f4c",
-    "_rev": 1650615807630,
+    "_rev": 1650573928508,
     "_usw": {},
     "id": 2
   },
@@ -117,7 +117,7 @@
     ],
     "updateDate": 1650364913644,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1650615807630,
+    "_rev": 1650573835953,
     "id": 3,
     "_usw": {}
   },
@@ -134,7 +134,7 @@
     ],
     "updateDate": 1647426822982,
     "_id": "72e24c7d-8527-4c0e-a779-262dc2360dc9",
-    "_rev": 1650615807631,
+    "_rev": 1650407441216,
     "_usw": {},
     "id": 6
   },
@@ -154,7 +154,7 @@
     ],
     "updateDate": 1650553372588,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1650632813983,
+    "_rev": 1650573835953,
     "_usw": {},
     "id": 7
   },
@@ -166,7 +166,7 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\nform#srchfrm {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(50%);\n    aaafilter: grayscale(50%);\n    opacity: .5;\n}\np > a {\n    opacity: .5;\n}",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(50%);\n    aaafilter: grayscale(50%);\n    opacity: .5;\n}\np > a {\n    opacity: .5;\n}",
         "domains": [
           "msn.com"
         ]
@@ -178,9 +178,9 @@
         ]
       }
     ],
-    "updateDate": 1650632551373,
+    "updateDate": 1650783328741,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1650632813983,
+    "_rev": 1650783328741,
     "id": 8,
     "_usw": {}
   }

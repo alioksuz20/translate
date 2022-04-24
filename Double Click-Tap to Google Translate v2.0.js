@@ -52,7 +52,13 @@ $(document).ready(function () {
         // tap, img, press, drag
         $('body').on('drag', 'img',function(e) {
             //console.log(this, e);
-            $(this).hide();
+            if ('horizontal' == e.orientation) {
+                if (-1 == e.direction) { //left
+                    $(this).hide();
+                } else { //right
+                    $(this).remove();
+                }
+            }
         });
 
         //****************************************************

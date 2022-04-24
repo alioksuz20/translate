@@ -7,10 +7,11 @@
 
 // @match        *://*/*
 
-// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+/// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js
+// @require      https://raw.githubusercontent.com/alioksuz20/translate/main/swipe.js
 
-// @require      https://raw.githubusercontent.com/a-fung/jQueryTouch/master/jquery.touch.js
-// @require      https://raw.githubusercontent.com/a-fung/jQueryTouch/master/jquery.swipe.js
+/// @require      https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js
 
 // @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
@@ -41,29 +42,41 @@ $(document).ready(function () {
             original.replaceWith(clone);
         });
 
-        $("img").on("click", function(z) {
+        //$("img").on("click", function(z) {
 
-            $("img").swipe( function(direction) { // "left", "upleft", "up", "upright", "right", "downright", "down" or "downleft".
-                // your handler code
+        $("img").on("swipeleft", function(direction) { // "left", "upleft", "up", "upright", "right", "downright", "down" or "downleft".
+            // your handler code
 
-                console.log($(z.target));
-                var swipedElement = $(z.target);
-                var swipedElementTagName = swipedElement.prop("tagName");
-                console.log("Fiskelenen öğe: " + swipedElementTagName);
+            console.log($(z.target));
+            var swipedElement = $(z.target);
+            var swipedElementTagName = swipedElement.prop("tagName");
+            alert("Fiskelenen öğe: " + swipedElementTagName);
 
-                if (direction=="left") {
-                    console.log(direction);
-                    swipedElement.parents('span.storyimage').hide();
+            //if (direction=="left") {
+            //console.log(direction);
+            swipedElement.parents('span.storyimage').hide();
 
-                }
+            //}
 
-                //direction.preventDefault;
-
-            }, { preventDefault: true, mouse: true, pen: true, distance: 50});
-
-            z.preventDefault;
+            //direction.preventDefault;
 
         });
+
+        // z.preventDefault;
+
+        //});
+
+        $("body").onSwipe(function(results){
+            if(results.up == true)
+                alert("Up")
+            if(results.right == true)
+                alert("Right")
+            if(results.down == true)
+                alert("Down")
+            if(results.left == true)
+                alert("Left")
+        });
+
 
 
     }, 1000);

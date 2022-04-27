@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.11
+// @version      2.12
 // @description  try to take over the world!
 // @author       You
 
@@ -19,6 +19,20 @@
 
 
 $(document).ready(function () {
+
+
+
+
+    //****************************************************
+
+    // | tap | doubletap | press | drag | flick | (flick not working!)
+    $('body').on('flick', '.clickedElementDiziCumle',function(e) {
+        console.log(this, e);
+        console.log($(this).text());
+
+    });
+
+    //****************************************************
 
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████

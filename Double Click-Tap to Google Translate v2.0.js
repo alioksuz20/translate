@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.12
+// @version      2.13
 // @description  try to take over the world!
 // @author       You
 
@@ -322,8 +322,9 @@ $(document).ready(function () {
                     source: 'en'
                 };
 
-                $.translate.onComplete = function () {
 
+
+                $.translate.onComplete = function () {
 
                     // clickedElementCURRENT_CumleSPAN.first().get(0).scrollIntoView({
                     //     behavior: 'instant',
@@ -336,7 +337,16 @@ $(document).ready(function () {
                     $("</br>").insertAfter(clickedElementCURRENT_CumleSPAN);
 
                     clickedElementCURRENT_CeviriSPAN.addClass('clickedElementDiziCevrildi');
+
+                    // DİĞER İŞLEMLER:
+                    // https://blog.sessionstack.com:
+
+                    $("div.pw-highlight-menu").parent().parent().parent().remove();
+                    $("div.pw-multi-vote-icon").parent().parent().parent().remove();
+
                 }
+
+
 
                 clickedElementCURRENT_CeviriSPAN.translate({
                     // source: 'de', // You can override source
@@ -344,6 +354,7 @@ $(document).ready(function () {
                     progressIndicator: '' // You can override progressIndicator
                     // progressIndicator: '<span class="my-indicator"></span>' // You can override progressIndicator
                 });
+
 
 
 

@@ -26,11 +26,11 @@ $(document).ready(function () {
     //****************************************************
 
     // | tap | doubletap | press | drag | flick | (flick not working!)
-    $('body').on('flick', '.clickedElementDiziCumle',function(e) {
-        console.log(this, e);
-        console.log($(this).text());
+    //     $('body').on('flick', '.clickedElementDiziCumle',function(e) {
+    //         //console.log(this, e);
+    //         //console.log($(this).text());
 
-    });
+    //     });
 
     //****************************************************
 
@@ -306,6 +306,15 @@ $(document).ready(function () {
                 $("</br>").insertAfter(clickedElementCURRENT_CeviriSPAN);
 
 
+                //-----------------------------------------------------------------------
+                // DİĞER İŞLEMLER:
+                // https://blog.sessionstack.com:
+                setTimeout(function () {
+                    $("div.pw-highlight-menu").parent().parent().remove();
+                    $("div.pw-multi-vote-icon").parent().parent().remove();
+                }, 20);
+                //-----------------------------------------------------------------------
+
                 // throw new error;
 
 
@@ -338,11 +347,7 @@ $(document).ready(function () {
 
                     clickedElementCURRENT_CeviriSPAN.addClass('clickedElementDiziCevrildi');
 
-                    // DİĞER İŞLEMLER:
-                    // https://blog.sessionstack.com:
 
-                    $("div.pw-highlight-menu").parent().parent().parent().remove();
-                    $("div.pw-multi-vote-icon").parent().parent().parent().remove();
 
                 }
 

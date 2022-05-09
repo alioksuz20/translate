@@ -1,13 +1,16 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.13
+// @version      2.14
 // @description  try to take over the world!
 // @author       You
 
 // @match        *://*/*
 
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
+// @require      https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js
+// @resource     https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css
+
 // @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
 
 // @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
@@ -19,8 +22,6 @@
 
 
 $(document).ready(function () {
-
-
 
 
     //****************************************************
@@ -137,10 +138,6 @@ $(document).ready(function () {
     }
 
 
-
-
-
-
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
     $("body").on("click", ".clickedElementDiziCumle", function () {
@@ -151,11 +148,15 @@ $(document).ready(function () {
         // if (is_Windows) {
         // Windows ta metni kopyalamadan önce metni seçili hale getirmemiz gerekiyor. Read Aloud ancak seçili metni okuyor:
         $(this).selectText();
-        document.execCommand("copy");
 
         setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+            document.execCommand("copy");
+        }, 50);
+
+        setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+            //document.execCommand("copy");
             document.getSelection().removeAllRanges();
-        }, 200);
+        }, 400);
         blink_text(this);
 
         //}
@@ -179,13 +180,15 @@ $(document).ready(function () {
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
     // Bir kelimenin üstüne çift tıklayarak Parent ını seçelim. Kelimeden paragraf seçme gibi...
-    $("body").on("dblclick", function (x) {
+    $("body").on("click", function (x) {
 
-        if ($(x.target).is(".clickedElementDiziCumle") || $(x.target).is(".clickedElementDiziCeviri")) {
-            // not stuff in here
-            console.log(".clickedElementDiziCumle veya .clickedElementDiziCeviri OLAN bir öğeye çift tıkladınız, Bunlar tekrar kullanılamaz. ÇEVİRİ İPTAL");
+        if ($(x.target).is(".clickedElementDiziCumle")
+            || $(x.target).is(".clickedElementDiziCevrildi")
+            || $(x.target).is("a")) {
+            // Do nothing
+            console.log(".clickedElementDiziCumle veya .clickedElementDiziCevrildi OLAN bir öğeye çift tıkladınız, Bunlar tekrar kullanılamaz. ÇEVİRİ İPTAL");
         } else {
-            console.log(".clickedElementDiziCumle veya .clickedElementDiziCeviri OLMAYAN bir öğeye çift tıkladınız, DEVAM EDELİM ;-) ");
+            console.log(".clickedElementDiziCumle veya .clickedElementDiziCevrildi OLMAYAN bir öğeye çift tıkladınız, DEVAM EDELİM ;-) ");
 
 
             /*
@@ -233,7 +236,7 @@ $(document).ready(function () {
             console.log("Çift Tıklanan öğe karakter sayısı: " + clickedElement.text().length);
 
             // Panoya kopyalayıp; Android de Tasker ile Windows da Firefox >> ReadAloud ve ReadAloud.ahk ile okutalım:
-            // document.execCommand("copy");
+            //document.execCommand("copy");
 
 
 
@@ -292,9 +295,13 @@ $(document).ready(function () {
                 // AYRILMIŞ MEVCUT CÜMLEMİZ/CÜMLELERİMİZ:
                 var clickedElementCURRENT_CumleSPAN = clickedElementCURRENT.find("span.clickedElementDiziCumle");
 
+
+
                 clickedElementCURRENT_CumleSPAN.each(function () {
                     $(this).clone().addClass('clickedElementDiziCeviri').insertAfter($(this).next()); // Next yani <br> den sonraya atalım klonu
                 });
+
+
 
 
                 // AYRILMIŞ MEVCUT KLON/ÇEVRİLECEK CÜMLEMİZ/CÜMLELERİMİZ:
@@ -316,6 +323,16 @@ $(document).ready(function () {
                 //-----------------------------------------------------------------------
 
                 // throw new error;
+
+                blink_text(clickedElementCURRENT_CumleSPAN);
+                //clickedElementCURRENT_CumleSPAN.animate({color: 'tomato'}, 1000);
+                clickedElementCURRENT_CumleSPAN.addClass('clickedElementDiziCumleClicked');
+                setTimeout(function () {
+                    clickedElementCURRENT_CumleSPAN.removeClass('clickedElementDiziCumleClicked');
+                }, 400);
+
+
+
 
 
 

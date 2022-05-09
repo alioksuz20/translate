@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.14
+// @version      2.15
 // @description  try to take over the world!
 // @author       You
 
@@ -23,6 +23,9 @@
 
 $(document).ready(function () {
 
+    $("div.pw-highlight-menu").parent().parent().remove();
+    $("a[rel='noopener follow']").parent().parent().parent().remove();
+    $("div.pw-multi-vote-icon").parent().parent().remove();
 
     //****************************************************
 
@@ -184,6 +187,7 @@ $(document).ready(function () {
 
         if ($(x.target).is(".clickedElementDiziCumle")
             || $(x.target).is(".clickedElementDiziCevrildi")
+            || $(x.target).is(".sectigimizMetin")
             || $(x.target).is("a")) {
             // Do nothing
             console.log(".clickedElementDiziCumle veya .clickedElementDiziCevrildi OLAN bir öğeye çift tıkladınız, Bunlar tekrar kullanılamaz. ÇEVİRİ İPTAL");
@@ -403,6 +407,8 @@ $(document).ready(function () {
     });
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+
 
 
     // Her 200ms de bir bağlantıları sadece metne dönüştür.

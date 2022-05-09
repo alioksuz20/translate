@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.15
+// @version      2.16
 // @description  try to take over the world!
 // @author       You
 
@@ -25,10 +25,8 @@ $(document).ready(function () {
 
 
     $("button[aria-label='responses']").parent().parent().parent().parent().remove();
-
     $("div.pw-highlight-menu").parent().parent().remove();
     $("a[rel='noopener follow']").parent().parent().parent().remove();
-    //$("div.pw-multi-vote-icon").parent().parent().remove();
 
     //****************************************************
 
@@ -191,7 +189,8 @@ $(document).ready(function () {
         if ($(x.target).is(".clickedElementDiziCumle")
             || $(x.target).is(".clickedElementDiziCevrildi")
             || $(x.target).is(".sectigimizMetin")
-            || $(x.target).is("a")) {
+            || $(x.target).is("a")
+            || $(x.target).is("a span")) {
             // Do nothing
             console.log(".clickedElementDiziCumle veya .clickedElementDiziCevrildi OLAN bir öğeye çift tıkladınız, Bunlar tekrar kullanılamaz. ÇEVİRİ İPTAL");
         } else {

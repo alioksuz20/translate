@@ -23,9 +23,12 @@
 
 $(document).ready(function () {
 
+
+    $("button[aria-label='responses']").parent().parent().parent().parent().remove();
+
     $("div.pw-highlight-menu").parent().parent().remove();
     $("a[rel='noopener follow']").parent().parent().parent().remove();
-    $("div.pw-multi-vote-icon").parent().parent().remove();
+    //$("div.pw-multi-vote-icon").parent().parent().remove();
 
     //****************************************************
 
@@ -320,10 +323,10 @@ $(document).ready(function () {
                 //-----------------------------------------------------------------------
                 // DİĞER İŞLEMLER:
                 // https://blog.sessionstack.com:
-                setTimeout(function () {
-                    $("div.pw-highlight-menu").parent().parent().remove();
-                    $("div.pw-multi-vote-icon").parent().parent().remove();
-                }, 20);
+                // setTimeout(function () {
+                //     $("div.pw-highlight-menu").parent().parent().remove();
+                //     $("div.pw-multi-vote-icon").parent().parent().remove();
+                // }, 20);
                 //-----------------------------------------------------------------------
 
                 // throw new error;

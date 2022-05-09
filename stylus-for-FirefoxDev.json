@@ -27,7 +27,7 @@
       "manage.onlyUsercss.invert": false,
       "manage.actions.expanded": true,
       "manage.backup.expanded": true,
-      "manage.filters.expanded": true,
+      "manage.filters.expanded": false,
       "manage.newUI": false,
       "manage.newUI.favicons": false,
       "manage.newUI.faviconsGray": true,
@@ -69,7 +69,7 @@
       "editor.colorpicker": true,
       "editor.colorpicker.hexUppercase": false,
       "editor.colorpicker.hotkey": "",
-      "editor.colorpicker.color": "hsl(91, 35%, 38%)",
+      "editor.colorpicker.color": "#ba9e69",
       "editor.colorpicker.maxHeight": 300,
       "hotkey._execute_browser_action": "",
       "hotkey.openManage": "",
@@ -98,28 +98,9 @@
     ],
     "updateDate": 1650573928508,
     "_id": "e7055f06-1f18-4b61-9d2b-e2440cec6f4c",
-    "_rev": 1650607424054,
+    "_rev": 1650615807630,
     "_usw": {},
     "id": 2
-  },
-  {
-    "updateUrl": null,
-    "url": null,
-    "installDate": 1650085047781,
-    "name": "Double Click/Tap to Google Translate",
-    "sections": [
-      {
-        "code": "\n\n\n\nspan.klonDiziCumleSPAN {\n    color:  hsl(48, 59%, 39%) !important;\n    display: inline-block;\n    cursor: pointer;\n    \n}\nspan.klonDiziCumleSPAN::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n}\nspan.klonDiziCumleSPANklonCeviri {\n    color:  hsl(91, 35%, 38%) !important;\n    display: inline-block;\n    margin-top: 8px;\n}\n",
-        "urlPrefixes": [
-          "http"
-        ]
-      }
-    ],
-    "updateDate": 1650364913644,
-    "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1650607424054,
-    "id": 3,
-    "_usw": {}
   },
   {
     "enabled": true,
@@ -134,7 +115,7 @@
     ],
     "updateDate": 1647426822982,
     "_id": "72e24c7d-8527-4c0e-a779-262dc2360dc9",
-    "_rev": 1650607424054,
+    "_rev": 1650615807631,
     "_usw": {},
     "id": 6
   },
@@ -146,15 +127,15 @@
     "name": "Double Click/Tap to Google Translate v2",
     "sections": [
       {
-        "code": "\n\n\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    color:  hsl(48, 59%, 50%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCeviri {\n    color:  hsl(200, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n",
+        "code": "\n::selection,\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    AAAcolor:  hsl(48, 59%, 50%) !important;\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCeviri {\n    AAAcolor:  hsl(200, 35%, 50%) !important;\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    AAAcolor:  hsl(91, 35%, 50%) !important;\n    color:  hsl(200, 35%, 55%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n",
         "urlPrefixes": [
           "http"
         ]
       }
     ],
-    "updateDate": 1651043225917,
+    "updateDate": 1652048082628,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1651043225917,
+    "_rev": 1652048082629,
     "_usw": {},
     "id": 7
   },
@@ -166,21 +147,20 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\n\nspan, p {\n    line-height: 1.4em;\n}\n",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\n\n\nspan, p {\n    line-height: 1.4em;\n}\n",
         "domains": [
           "msn.com",
           "cnbc.com"
         ]
       }
     ],
-    "updateDate": 1651042546912,
+    "updateDate": 1651443949582,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1651042546912,
+    "_rev": 1651443949582,
     "id": 8,
     "_usw": {}
   },
   {
-    "enabled": true,
     "updateUrl": null,
     "url": null,
     "installDate": 1651043159752,
@@ -195,7 +175,24 @@
     ],
     "updateDate": 1651043188259,
     "_id": "c1f183a1-af5f-4a18-a2f1-4b09e04aef3e",
-    "_rev": 1651043233610,
-    "id": 9
+    "_rev": 1651043346212,
+    "id": 9,
+    "_usw": {}
+  },
+  {
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1651443985850,
+    "name": "Others",
+    "sections": [
+      {
+        "code": "/* OTHERS */\n\ndiv[class^=\"pw-highlight-menu\"] {\n    display: none !important;\n}"
+      }
+    ],
+    "updateDate": 1651444364345,
+    "_id": "f6b03bca-bd8a-4046-b215-35713f912115",
+    "_rev": 1651446810035,
+    "id": 10,
+    "_usw": {}
   }
 ]

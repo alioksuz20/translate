@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.17
+// @version      2.18
 // @description  try to take over the world!
 // @author       You
 
@@ -24,9 +24,17 @@
 $(document).ready(function () {
 
 
-    $("button[aria-label='responses']").parent().parent().parent().parent().remove();
-    $("div.pw-highlight-menu").parent().parent().remove();
-    $("a[rel='noopener follow']").parent().parent().parent().remove();
+
+    //-----------------------------------------------------------------------
+    // SAYFALARDA SİLİNECEK BÖLÜMLER:
+    // Medium.COM:
+    setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+        $("p:contains('free member-only')").closest("div.l").css('background-color','red').remove();
+        $("footer").siblings("div:has(button[aria-label='responses'])").css('background-color','red').remove();
+        $("nav.ag").css('background-color','red').remove();
+    }, 1000);
+    //-----------------------------------------------------------------------
+
 
     //****************************************************
 
@@ -320,14 +328,6 @@ $(document).ready(function () {
                 $("</br>").insertAfter(clickedElementCURRENT_CeviriSPAN);
 
 
-                //-----------------------------------------------------------------------
-                // DİĞER İŞLEMLER:
-                // https://blog.sessionstack.com:
-                // setTimeout(function () {
-                //     $("div.pw-highlight-menu").parent().parent().remove();
-                //     $("div.pw-multi-vote-icon").parent().parent().remove();
-                // }, 20);
-                //-----------------------------------------------------------------------
 
                 // throw new error;
 

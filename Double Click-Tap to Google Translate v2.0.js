@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.18
+// @version      2.19
 // @description  try to take over the world!
 // @author       You
 
@@ -35,7 +35,9 @@ $(document).ready(function () {
     }, 1000);
     //-----------------------------------------------------------------------
 
-
+    // theidioms.com:
+    document.removeEventListener('copy', addCopyrightInfo);
+    
     //****************************************************
 
     // | tap | doubletap | press | drag | flick | (flick not working!)

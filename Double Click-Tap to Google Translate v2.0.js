@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.19
+// @version      2.20
 // @description  try to take over the world!
 // @author       You
 
@@ -25,19 +25,7 @@ $(document).ready(function () {
 
 
 
-    //-----------------------------------------------------------------------
-    // SAYFALARDA SİLİNECEK BÖLÜMLER:
-    // Medium.COM:
-    setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
-        $("p:contains('free member-only')").closest("div.l").css('background-color','red').remove();
-        $("footer").siblings("div:has(button[aria-label='responses'])").css('background-color','red').remove();
-        $("nav.ag").css('background-color','red').remove();
-    }, 1000);
-    //-----------------------------------------------------------------------
 
-    // theidioms.com:
-    document.removeEventListener('copy', addCopyrightInfo);
-    
     //****************************************************
 
     // | tap | doubletap | press | drag | flick | (flick not working!)
@@ -447,6 +435,24 @@ $(document).ready(function () {
     //         }
 
     //     }, 200);
+
+
+
+    //-----------------------------------------------------------------------
+    // SAYFALARDA SİLİNECEK BÖLÜMLER:
+    // Medium.COM:
+    setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+        $("p:contains('free member-only')").closest("div.l").css('background-color','red').remove();
+        $("footer").siblings("div:has(button[aria-label='responses'])").css('background-color','red').remove();
+        $("nav.ag").css('background-color','red').remove();
+    }, 1000);
+
+    // theidioms.com:
+    document.removeEventListener('copy', addCopyrightInfo);
+    //-----------------------------------------------------------------------
+
+
+
 
 
 }); // $(document).ready - SON

@@ -24,3 +24,7 @@ people.com##.jumpstart-video
 www.theidioms.com###cb
 www.theidioms.com###share
 
+! 2022-05-29 https://elllo.org
+||elllo.org/english/scriptscode/moot*$script,1p
+
+

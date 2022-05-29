@@ -1,1 +1,26 @@
-aaa
+! 2022-04-17 https://rigorousthemes.com
+rigorousthemes.com##[id^="AdThrive_Content"]
+
+! 2022-04-26 https://www.cnbc.com
+www.cnbc.com##.NavLinks-styles-makeit-navMenuArticleSticky--2shG3.NavLinks-styles-makeit-navMenu--1MAEV.NavLinks-styles-makeit-navMenuSticky--zmiSZ
+
+! 2022-05-04 https://www.cnbc.com
+www.cnbc.com##.ArticleHeader-styles-makeit-authorAndShareInline--St7zZ > .SocialShare-styles-makeit-socialShare--3XR2D
+
+! 2022-05-19 https://www.buzzfeednews.com
+www.buzzfeednews.com##.Ad--loading.Ad--edit
+
+! 2022-05-21 https://www.yahoo.com
+www.yahoo.com###header-wrapper
+www.yahoo.com##.social-bar-fixed
+
+! 2022-05-25 https://people.com
+people.com##.subcontainer > .logo > .mobile-only.full-logo
+people.com##.subscribe-link
+people.com##.initialized.docked-sharebar.component
+people.com##.jumpstart-video
+
+! 2022-05-27 https://www.theidioms.com
+www.theidioms.com###cb
+www.theidioms.com###share
+

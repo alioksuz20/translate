@@ -27,4 +27,6 @@ www.theidioms.com###share
 ! 2022-05-29 https://elllo.org
 ||elllo.org/english/scriptscode/moot*$script,1p
 
+! 2022-05-29 https://www.npr.org
+||npr.org^$script,1p
 

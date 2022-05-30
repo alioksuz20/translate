@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.02
+// @version      1.03
 // @description  MSN.com, Medium.com
 // @author       You
 
 // @match        https://*.msn.com/*
 // @match        https://*.medium.com/*
+// @match        https://*.theidioms.com/*
 
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // @run-at       document-end
@@ -50,10 +51,28 @@ $(document).ready(function() {
         console.log("VarMisinYokMusun1 İPTAL EDİLDİ!..");
     }, 10000);
 
-    //************************************************************************
-
-
     //██████████████████████████████████████████████████████████████████████
+
+
+    //████████████████████████   Medium.com   █████████████████████████████████
+
+    setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+        $("p:contains('free member-only')").closest("div.l").css('background-color','red').remove();
+        $("footer").siblings("div:has(button[aria-label='responses'])").css('background-color','red').remove();
+        $("nav.ag").css('background-color','red').remove();
+    }, 1000);
+
+    //██████████████████████████████████████████████████████████████████████████
+
+
+    //████████████████████████   Theidioms.com   █████████████████████████████████
+
+    if (window.location.href.indexOf("https://www.theidioms.com") == 0) {
+        document.removeEventListener('copy', addCopyrightInfo);
+    }
+
+    //██████████████████████████████████████████████████████████████████████████
+
 
 
 
@@ -84,22 +103,7 @@ $(document).ready(function() {
     //***************************************************
 
 
-    //     // Her 200ms de bir bağlantıları sadece metne dönüştür.
-    //     var VarMisinYokMusun = setInterval( function() {
 
-    //         if($("footer").length) {
-    //             clearInterval(VarMisinYokMusun);
-
-    //             setTimeout(function() {
-    //                 $("section").parentsUntil("body").unwrap();
-    //                 $("section").unwrap();
-    //                 $("body > *").not("section").remove();
-    //                 $("section.pw-more-medium-articles").remove();
-    //             }, 500);
-
-    //         }
-
-    //     }, 200);
 
 });
 

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.21
+// @version      2.22
 // @description  try to take over the world!
 // @author       You
 
@@ -276,7 +276,7 @@ $(document).ready(function () {
                 // console.log(str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|"));
 
 
-                var clickedElementDizi = str.replace(/(?![A-Z]..?\.)(?![A-Z]?\.)(\b\S+[.?!:]["'’]?)\s/g, "$1|").split("|");
+                var clickedElementDizi = str.replace(/(?![A-Z]..?\.)(?![A-Z]?\.)(\b\S+[.?!:]["'’]?)\s/g, "$1|").split(/\n|\|/);
                 // var klonDizi = str.replace(/(?!Mrs?\.|Jr\.|Dr\.|Sr\.|Prof\.)(\b\S+[.?!]["']?)\s/g, "$1|").split("|");
                 // var klonDizi = str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|");
 

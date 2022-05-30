@@ -12,9 +12,8 @@ rigorousthemes.com##[id^="AdThrive_Content"]
 
 ! 2022-04-26 https://www.cnbc.com
 www.cnbc.com##.NavLinks-styles-makeit-navMenuArticleSticky--2shG3.NavLinks-styles-makeit-navMenu--1MAEV.NavLinks-styles-makeit-navMenuSticky--zmiSZ
-
-! 2022-05-04 https://www.cnbc.com
 www.cnbc.com##.ArticleHeader-styles-makeit-authorAndShareInline--St7zZ > .SocialShare-styles-makeit-socialShare--3XR2D
+
 
 ! 2022-05-19 https://www.buzzfeednews.com
 www.buzzfeednews.com##.Ad--loading.Ad--edit
@@ -35,10 +34,10 @@ www.theidioms.com###share
 
 ! 2022-05-29 https://elllo.org
 ||elllo.org/english/scriptscode/moot*$script,1p
+elllo.org##.aside
 
 ! 2022-05-29 https://www.npr.org
 ||npr.org^$script,1p
-
 
 
 

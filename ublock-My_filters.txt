@@ -1,3 +1,12 @@
+! 2022-05-12 https://altin.in
+altin.in###ustR
+altin.in##.icReklam
+
+! 2022-05-13 https://tr.investing.com
+tr.investing.com##.ad-free-stripe.promo-strip-wrapper
+
+! ----------------------------------------------------
+
 ! 2022-04-17 https://rigorousthemes.com
 rigorousthemes.com##[id^="AdThrive_Content"]
 
@@ -29,4 +38,7 @@ www.theidioms.com###share
 
 ! 2022-05-29 https://www.npr.org
 ||npr.org^$script,1p
+
+
+
 

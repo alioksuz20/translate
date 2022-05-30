@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.22
+// @version      2.24
 // @description  try to take over the world!
 // @author       You
 
@@ -188,8 +188,12 @@ $(document).ready(function () {
             || $(x.target).is(".clickedElementDiziCevrildi")
             || $(x.target).is(".sectigimizMetin")
             || $(x.target).children(".sectigimizMetin").length
+            || $(x.target).is("button")
             || $(x.target).is("a")
-            || $(x.target).is("a span")) {
+            || $(x.target).is("a span")
+            || $(x.target).has('audio').length > 0
+            || $(x.target).has('img').length > 0
+            || $(x.target).is("ul")) {
             // Do nothing, Bunları çevirme!..
             console.log("ÇEVRİLMEYECEK bir öğeye tıkladınız! ÇEVİRİ İPTAL.");
         } else {
@@ -276,7 +280,7 @@ $(document).ready(function () {
                 // console.log(str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|"));
 
 
-                var clickedElementDizi = str.replace(/(?![A-Z]..?\.)(?![A-Z]?\.)(\b\S+[.?!:]["'’]?)\s/g, "$1|").split(/\n|\|/);
+                var clickedElementDizi = str.replace(/(?![A-Z]..?\.)(?![A-Z]?\.)(\b\S+[.?!:]["'’]?)\s/g, "$1|").split("|");
                 // var klonDizi = str.replace(/(?!Mrs?\.|Jr\.|Dr\.|Sr\.|Prof\.)(\b\S+[.?!]["']?)\s/g, "$1|").split("|");
                 // var klonDizi = str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|");
 
@@ -357,6 +361,30 @@ $(document).ready(function () {
                     $("</br>").insertAfter(clickedElementCURRENT_CumleSPAN);
 
                     clickedElementCURRENT_CeviriSPAN.addClass('clickedElementDiziCevrildi');
+
+
+                    // ELLLO.org gibi sitelerde içi boş (sadece tab ve boşluk var) çıkan span elemanlarını çeviriden sonra sildirelim:
+                    // ---------------------------------------------------------------------------------------------------------------
+                    var regex = new RegExp(/^\t*\s*$/);
+
+                    $("span.clickedElementDiziCumle").each(function () {
+                        if ( regex.test($(this).html())) {
+                            console.log("span BOŞ");
+                            $(this).prev("br").remove();
+                            $(this).remove();
+                        }
+                    });
+
+                    $("span.clickedElementDiziCeviri.clickedElementDiziCevrildi").each(function () {
+                        if ( regex.test($(this).html())) {
+                            console.log("span BOŞ");
+                            $(this).prev("br").remove();
+                            $(this).remove();
+                        }
+                    });
+                    // ---------------------------------------------------------------------------------------------------------------
+
+
 
                 }
 

@@ -27,7 +27,7 @@
       "manage.onlyUsercss.invert": false,
       "manage.actions.expanded": true,
       "manage.backup.expanded": true,
-      "manage.filters.expanded": false,
+      "manage.filters.expanded": true,
       "manage.newUI": false,
       "manage.newUI.favicons": false,
       "manage.newUI.faviconsGray": true,
@@ -69,7 +69,7 @@
       "editor.colorpicker": true,
       "editor.colorpicker.hexUppercase": false,
       "editor.colorpicker.hotkey": "",
-      "editor.colorpicker.color": "#ba9e69",
+      "editor.colorpicker.color": "hsl(91, 35%, 38%)",
       "editor.colorpicker.maxHeight": 300,
       "hotkey._execute_browser_action": "",
       "hotkey.openManage": "",
@@ -98,7 +98,7 @@
     ],
     "updateDate": 1650573928508,
     "_id": "e7055f06-1f18-4b61-9d2b-e2440cec6f4c",
-    "_rev": 1650615807630,
+    "_rev": 1652085810970,
     "_usw": {},
     "id": 2
   },
@@ -115,7 +115,7 @@
     ],
     "updateDate": 1647426822982,
     "_id": "72e24c7d-8527-4c0e-a779-262dc2360dc9",
-    "_rev": 1650615807631,
+    "_rev": 1653571713810,
     "_usw": {},
     "id": 6
   },
@@ -127,15 +127,15 @@
     "name": "Double Click/Tap to Google Translate v2",
     "sections": [
       {
-        "code": "\n::selection,\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    AAAcolor:  hsl(48, 59%, 50%) !important;\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCeviri {\n    AAAcolor:  hsl(200, 35%, 50%) !important;\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    AAAcolor:  hsl(91, 35%, 50%) !important;\n    color:  hsl(200, 35%, 55%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n",
+        "code": "\n::selection,\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    AAAcolor:  hsl(48, 59%, 50%) !important;\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCeviri {\n    AAAcolor:  hsl(200, 35%, 50%) !important;\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    AAAcolor:  hsl(91, 35%, 50%) !important;\n    color:  hsl(200, 35%, 55%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\n",
         "urlPrefixes": [
           "http"
         ]
       }
     ],
-    "updateDate": 1652048082628,
+    "updateDate": 1653899328065,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1652048082629,
+    "_rev": 1653899328065,
     "_usw": {},
     "id": 7
   },
@@ -147,16 +147,17 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\n\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\n\n\nspan, p {\n    line-height: 1.4em;\n}\n",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\nimg {\n    filter: sepia(20%);\n    aaafilter: grayscale(50%);\n    opacity: .6;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\naudio {\n    width: -moz-available !important;\n}\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio_play-pause {\n    position: fixed;\n    AAAborder: 1px solid #EC008C;\n    AAAborder-radius: 20px;\n\ttop: 20px;\n\tright: 20px;\n    cursor: pointer;\n}",
         "domains": [
           "msn.com",
-          "cnbc.com"
+          "cnbc.com",
+          "elllo.org"
         ]
       }
     ],
-    "updateDate": 1651443949582,
+    "updateDate": 1653920137674,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1651443949582,
+    "_rev": 1653920137675,
     "id": 8,
     "_usw": {}
   },
@@ -175,9 +176,10 @@
     ],
     "updateDate": 1651043188259,
     "_id": "c1f183a1-af5f-4a18-a2f1-4b09e04aef3e",
-    "_rev": 1651043346212,
+    "_rev": 1653571735646,
     "id": 9,
-    "_usw": {}
+    "_usw": {},
+    "enabled": false
   },
   {
     "updateUrl": null,
@@ -191,8 +193,50 @@
     ],
     "updateDate": 1651444364345,
     "_id": "f6b03bca-bd8a-4046-b215-35713f912115",
-    "_rev": 1651446810035,
+    "_rev": 1652085810970,
     "id": 10,
+    "_usw": {}
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1652271448696,
+    "name": "investing.com",
+    "sections": [
+      {
+        "code": "div.wrapper {\n    margin: 0 100px !important;\n}\ndiv.sidebarCommentary {\n    width: 600px !important;\n    font-size: initial;    \n}\ndiv.earAdvWrapper {\n    display: none !important;\n}\n\n",
+        "domains": [
+          "investing.com"
+        ]
+      }
+    ],
+    "updateDate": 1652271891246,
+    "_id": "7f982589-94c8-405e-9141-c755e879f93a",
+    "_rev": 1652271891246,
+    "id": 11,
+    "_usw": {}
+  },
+  {
+    "enabled": true,
+    "updateUrl": null,
+    "url": null,
+    "installDate": 1652343152184,
+    "name": "Dictionarist DARK",
+    "sections": [
+      {
+        "code": "/*https://www.dictionarist.com/english-turkish*/\n::selection {\n    background-color: #00e3ff !important;\n    color: black !important;\n}\n\nbody {\n    zoom: 1.1;\n}\n\nbody, #logo, #related a {\n    font-family: 'Roboto', sans-serif !important;\n\tAAAfont-family: Georgia, 'Nimbus Roman No9 L', 'Century Schoolbook L', serif;\n    AAAfont-family: 'Ubuntu', sans-serif !important;\n    AAAfont-family: \"Arial Sans Unicode MS\", Arial !important;\n    background-color: #000 !important;\n    text-shadow: 0 0 3px #000 !important;\n}\ndiv.center {\n    width: auto !important;\n}\ndiv#column-left,\ndiv#column-right {\n    display: none !important;\n}\ndiv#container {\n        margin: 0 auto;\n    float: unset !important;\n}\n\n#related a {\n    font-size: 11pt !important;\n    font-weight: bold !important;\n    background-color: #728e6d !important;\n    color: black !important;\n    text-shadow: none !important;\n\n}\ndiv#searchbox input {\n    background-color: #728e6d !important;\n    border: 1px solid black !important;\n    border-radius: 5px !important;\n\n}\n#QueryForm a#btnLangOpts{\n    display: none !important;\n}\n\n#QueryForm button {\n    font-weight: 300 !important;\n}\n#breadcrumb li {\n    color: lightgray !important;\n    text-shadow: none !important;\n}\ndiv#content {\n    background-color: #333 !important;\n    /*rgb(236, 234, 203) !important;*/\n    border: 3px solid #5880aa !important;\n    border-radius: 10px !important;\n}\ndiv#content h2 {\n    color: #6bac6a !important;\n    padding-top: 10px !important;\n}\ndiv#content a#logo {\n    background-color: #555 !important;\n    border-radius: 5px !important;\n}\ndiv#share {\n    display: none !important;\n}\ndiv.section {\n    background-color: #444 !important;\n    color: lightgray !important;\n    padding: 0px 10px 5px !important;\n    width: 97% !important;\n    border: 1px solid black !important;\n\n    border-radius: 10px !important;\n    font-weight: 500 !important;\n    font-size: 12pt !important;\n}\ndiv.section h1 {\n    color: orange !important;\n\n}\ndiv#cumleler {\n    background-color: #444 !important;\n}\ndiv#cumleler div.source {\n    font-weight: 500 !important;\n    font-size: 12pt !important;\n}\ndiv#cumleler div.translation {\n    AAAfont-family: 'Courgette', sans-serif !important;\n    color: #C7BD6C !important;\n    AAApadding-bottom: 10px;\n    AAAfont-style: italic;\n    font-weight: 500 !important;\n    font-size: 12pt !important;\n    AAAborder-left: 1px solid #3b863a !important;\n}\ndiv#cumleler div.speak img:nth-child(n+3) {\n    display: none !important;\n    width: 70px !important;\n}\ndiv.speak {\n    width: 70px !important;\n}\ndiv#cumleler div.row {\n    AAAborder-bottom: 1px solid #3b863a !important;\n    width: 100% !important;\n    border-radius: 0px !important;\n}\ndiv#cumleler div.row:nth-child(odd) {\n    background-color: #444 !important;\n}\ndiv#cumleler div.row:nth-child(even) {\n    background-color: #333 !important;\n}\ndiv#cumleler div.row:hover {\n    AAAbackground-color: #ffff99 !important;\n    outline: 3px solid #cc7000 !important;\n}\ndiv#synonyms span {\n    color: orange !important;\n}\ndiv#related > div:nth-child(2) {\n    margin-top: 15px !important;\n}\n\ndiv#adcontainer,\ndiv.ad728x90 {\n    display: none !important;\n}\nins.adsbygoogle {\n    display: none !important;\n}\na[rel='nofollow'] {\n    display: none !important;\n}\n\n/*************************************/",
+        "urlPrefixes": [
+          "https://www.dictionarist.com/english-turkish",
+          "https://tr.dictionarist.com/turkce-ingilizce",
+          "https://tr.dictionarist.com/ingilizce-turkce/"
+        ]
+      }
+    ],
+    "updateDate": 1652343271363,
+    "_id": "b83953d0-6246-4b60-9f7f-84f15c814401",
+    "_rev": 1652343271363,
+    "id": 12,
     "_usw": {}
   }
 ]

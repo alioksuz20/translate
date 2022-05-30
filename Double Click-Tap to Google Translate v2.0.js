@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.20
+// @version      2.21
 // @description  try to take over the world!
 // @author       You
 
@@ -308,7 +308,6 @@ $(document).ready(function () {
 
 
 
-
                 // AYRILMIŞ MEVCUT KLON/ÇEVRİLECEK CÜMLEMİZ/CÜMLELERİMİZ:
                 var clickedElementCURRENT_CeviriSPAN = clickedElementCURRENT.find("span.clickedElementDiziCeviri");
 
@@ -327,8 +326,6 @@ $(document).ready(function () {
                 setTimeout(function () {
                     clickedElementCURRENT_CumleSPAN.removeClass('clickedElementDiziCumleClicked');
                 }, 400);
-
-
 
 
 
@@ -361,10 +358,7 @@ $(document).ready(function () {
 
                     clickedElementCURRENT_CeviriSPAN.addClass('clickedElementDiziCevrildi');
 
-
-
                 }
-
 
 
                 clickedElementCURRENT_CeviriSPAN.translate({
@@ -375,24 +369,22 @@ $(document).ready(function () {
                 });
 
 
-
-
             }, 200);
 
 
 
 
-            //         setTimeout(function () {
+            //             setTimeout(function () {
 
-            //             if (clickedElementTagName == "LI") {
-            //                 console.log("li ye tıkladınız #############################");
+            //                 if (clickedElementTagName == "LI") {
+            //                     console.log("li ye tıkladınız #############################");
 
-            //                 console.log(clickedElement.text());
-            //                 console.log(clickedElement.siblings("li").translate());
-            //                 // clickedElement.trigger('dblclick');
-            //             }
+            //                     console.log(clickedElement.text());
+            //                     console.log(clickedElement.siblings("li").translate());
+            //                     // clickedElement.trigger('dblclick');
+            //                 }
 
-            //         }, 2000);
+            //             }, 2000);
 
 
         }
@@ -400,8 +392,6 @@ $(document).ready(function () {
     });
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-
 
 
     // Her 200ms de bir bağlantıları sadece metne dönüştür.
@@ -435,24 +425,6 @@ $(document).ready(function () {
     //         }
 
     //     }, 200);
-
-
-
-    //-----------------------------------------------------------------------
-    // SAYFALARDA SİLİNECEK BÖLÜMLER:
-    // Medium.COM:
-    setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
-        $("p:contains('free member-only')").closest("div.l").css('background-color','red').remove();
-        $("footer").siblings("div:has(button[aria-label='responses'])").css('background-color','red').remove();
-        $("nav.ag").css('background-color','red').remove();
-    }, 1000);
-
-    // theidioms.com:
-    document.removeEventListener('copy', addCopyrightInfo);
-    //-----------------------------------------------------------------------
-
-
-
 
 
 }); // $(document).ready - SON

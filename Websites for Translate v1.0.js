@@ -84,12 +84,12 @@ $(document).ready(function() {
 
         $("body").on('click', "div.audio_play-pause", function () {
             var audio = $('audio')[0];
-            if ( audio.paused ) {
-                audio.play();
+            if ( !audio.paused ) {
+                audio.pause();
                 $(this).removeClass("pause");
                 $(this).addClass("play");
             } else {
-                audio.pause();
+                audio.play();
                 $(this).removeClass("play");
                 $(this).addClass("pause");
             }

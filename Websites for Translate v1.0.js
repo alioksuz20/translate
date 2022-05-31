@@ -113,11 +113,11 @@ $(document).ready(function() {
 
         function scrollFunction() {
             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                $('audio').css('position', 'fixed').css('transition', 'transform 1s');
-                $('audio').css('bottom', '20px');
+                $('div.audio').css('position', 'fixed');
+                $('div.audio').css('bottom', '20px');
             } else {
-                $('audio').css('position', 'initial').css('transition', 'transform 1s');
-                $('audio').css('bottom', '');
+                $('div.audio').css('position', 'initial');
+                $('div.audio').css('bottom', '');
             }
         }
 

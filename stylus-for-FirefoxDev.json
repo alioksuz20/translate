@@ -147,7 +147,7 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\nimg {\n    AAAfilter: sepia(100%) grayscale(90%)!important;\n    opacity: .7 !important;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\n\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio{\n    width: -moz-available !important;   \n    z-index: 9999 !important; \n    left: 0;\n}\n\naudio {\n    width: -moz-available !important;\n    background-color: black !important;\n    opacity: .7 !important;\n}\n\ndiv.audio {\n    height: 40px;\n    background-color: black;\n    opacity: 1 !important;    \n}\n\ndiv.audio_play-pause {\n    position: fixed;\n\ttop: 270px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n}\ndiv.audio_play-pause.play {\n    background: url(\"https://img.icons8.com/cotton/344/circled-play.png\") no-repeat;\n    background-size: contain;\n}\ndiv.audio_play-pause.pause {\n    background: url(https://img.icons8.com/cotton/344/circled-pause.png) no-repeat;\n    background-size: contain;\n}\n\n\n",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\nimg {\n    /* filter: sepia(100%) grayscale(90%)!important; */\n    opacity: .7 !important;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\n\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio{\n    width: -moz-available !important;   \n    z-index: 9999 !important; \n    left: 0;\n}\n\naudio {\n    width: -moz-available !important;\n    background-color: black !important;\n    opacity: .7 !important;\n}\n\ndiv.audio {\n    height: 40px;\n    background-color: black;\n    opacity: 1 !important;    \n}\n\ndiv.audio_play-pause {\n    position: fixed;\n\ttop: 270px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n}\ndiv.audio_play-pause.play {\n    background: url(\"https://img.icons8.com/cotton/344/circled-play.png\") no-repeat;\n    background-size: contain;\n}\ndiv.audio_play-pause.pause {\n    background: url(https://img.icons8.com/cotton/344/circled-pause.png) no-repeat;\n    background-size: contain;\n}\n\n\n",
         "domains": [
           "msn.com",
           "cnbc.com",
@@ -155,9 +155,9 @@
         ]
       }
     ],
-    "updateDate": 1654001596450,
+    "updateDate": 1654005189128,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1654001596450,
+    "_rev": 1654005189128,
     "id": 8,
     "_usw": {}
   },

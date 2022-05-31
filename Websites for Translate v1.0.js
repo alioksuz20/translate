@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.05
+// @version      1.06
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -78,6 +78,7 @@ $(document).ready(function() {
     //████████████████████████   ELLLO.org   █████████████████████████████████
 
     if (window.location.href.indexOf("https://elllo.org") == 0) {
+
         $("body").append("<div class='audio_play-pause'/>");
         $("div.audio_play-pause").addClass("play");
 
@@ -86,14 +87,39 @@ $(document).ready(function() {
             var audio = $('audio')[0];
             if ( !audio.paused ) {
                 audio.pause();
-                $(this).removeClass("pause");
-                $(this).addClass("play");
+                $("div.audio_play-pause").removeClass("pause");
+                $("div.audio_play-pause").addClass("play");
             } else {
                 audio.play();
-                $(this).removeClass("play");
-                $(this).addClass("pause");
+                $("div.audio_play-pause").removeClass("play");
+                $("div.audio_play-pause").addClass("pause");
             }
         });
+
+
+        $("div.audio audio").on('play', function () {
+            $("div.audio_play-pause").removeClass("play");
+            $("div.audio_play-pause").addClass("pause");
+        });
+
+        $("div.audio audio").on('pause', function() {
+            $("div.audio_play-pause").removeClass("pause");
+            $("div.audio_play-pause").addClass("play");
+        });
+
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                $('audio').css('position', 'fixed').css('transition', 'transform 1s');
+                $('audio').css('bottom', '20px');
+            } else {
+                $('audio').css('position', 'initial').css('transition', 'transform 1s');
+                $('audio').css('bottom', '');
+            }
+        }
 
 
         // Biraz temizlik yapalım:
@@ -106,10 +132,18 @@ $(document).ready(function() {
 
         // Space tuşu ile ses kaydını oynat/durdur:
         $(document).on('keypress', function (e) {
-            e.preventDefault();
             // console.log(e.which);
             if (e.which == '32') { // SPACE
-                $("div.audio_play-pause").trigger('click');
+                e.preventDefault();
+                $("div.audio_play-pause").trigger("click");
+            }
+        });
+
+        // audio kontrolu aktif iken Space tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
+        $(document).on('keyup', function (e) {
+            // console.log(e.which);
+            if (e.which == '32') { // SPACE
+                e.preventDefault();
             }
         });
 

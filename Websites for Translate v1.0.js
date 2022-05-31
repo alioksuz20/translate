@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.06
+// @version      1.07
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -109,17 +109,21 @@ $(document).ready(function() {
 
 
         // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
+        //         window.onscroll = function() {scrollFunction()};
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                $('div.audio').css('position', 'fixed');
-                $('div.audio').css('bottom', '20px');
-            } else {
-                $('div.audio').css('position', 'initial');
-                $('div.audio').css('bottom', '');
-            }
-        }
+        //         function scrollFunction() {
+        //             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+
+        //                 if ($("div.container ul.tabs li.selected a").text() == "Script") {
+        //                     $('div.audio').css('position', 'fixed');
+        //                     $('div.audio').css('bottom', '0px');
+        //                 } else {
+        //                     $('div.audio').css('position', 'initial');
+        //                     $('div.audio').css('bottom', '');
+        //                 }
+
+        //             }
+        //         }
 
 
         // Biraz temizlik yapalım:
@@ -146,6 +150,41 @@ $(document).ready(function() {
                 e.preventDefault();
             }
         });
+
+
+        // Sayfa yüklendiğinde; "Script" dışındaki sekmelerde play/pause düğmemizi ve "audio" oynatıcısını gizleyelim:
+        if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
+            $("div.audio_play-pause").hide();
+            $("div.audio").hide();
+        } else {
+            $("div.audio_play-pause").show();
+            $("div.audio").show();
+            $('div.audio').css('position', 'fixed');
+            $('div.audio').css('bottom', '0px');
+        }
+
+        // Sekmelere tıkladığımızda; "Script" dışındaki sekmelerde play/pause düğmemizi ve "audio" oynatıcısını gizleyelim:
+        $("div.container ul.tabs li a").on('click', function () {
+            //console.log($("div.container ul.tabs li.selected a").text());
+            if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
+                $("div.audio_play-pause").hide();
+                $("div.audio").hide();
+            } else {
+                $("div.audio_play-pause").show();
+                $("div.audio").show();
+                $('div.audio').css('position', 'fixed');
+                $('div.audio').css('bottom', '0px');
+            }
+        });
+
+        // if ($("div.container ul.tabs li.selected a").text() == "Script") {
+        //     $('div.audio').css('position', 'fixed');
+        //     $('div.audio').css('bottom', '0px');
+        // } else {
+        //     $('div.audio').css('position', 'initial');
+        //     $('div.audio').css('bottom', '');
+        // }
+
 
     }
 

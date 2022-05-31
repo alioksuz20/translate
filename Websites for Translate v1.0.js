@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.04
+// @version      1.05
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -79,22 +79,41 @@ $(document).ready(function() {
 
     if (window.location.href.indexOf("https://elllo.org") == 0) {
         $("body").append("<div class='audio_play-pause'/>");
-        $("div.audio_play-pause").css('background','url("http://i.stack.imgur.com/lqK28.png") no-repeat').css('width','30px').css('height','30px').css('background-position','center -204px');
+        $("div.audio_play-pause").addClass("play");
+
+
+        $("body").on('click', "div.audio_play-pause", function () {
+            var audio = $('audio')[0];
+            if ( audio.paused ) {
+                audio.play();
+                $(this).removeClass("pause");
+                $(this).addClass("play");
+            } else {
+                audio.pause();
+                $(this).removeClass("play");
+                $(this).addClass("pause");
+            }
+        });
+
+
+        // Biraz temizlik yapalım:
+        $("div.tabcontents p, div.tabcontents li").html(function() {
+            return this.innerHTML.replace(/\s{2,}/g,' ')
+                .replace(/\s{2,}/g,' ')
+                .replace(/&nbsp;/g,'')
+                .replace(/<br>\s/g,'');
+        });
+
+        // Space tuşu ile ses kaydını oynat/durdur:
+        $(document).on('keypress', function (e) {
+            e.preventDefault();
+            // console.log(e.which);
+            if (e.which == '32') { // SPACE
+                $("div.audio_play-pause").trigger('click');
+            }
+        });
+
     }
-
-    $("body").on('click', "div.audio_play-pause", function () {
-        var audio = $('audio')[0];
-        if ( audio.paused ) {
-            audio.play();
-            $(this).css('width','30px').css('height','30px').css('background-position','center -143px');
-        } else {
-            audio.pause();
-            $(this).css('width','30px').css('height','30px').css('background-position','center -204px');
-        }
-    });
-
-
-
 
     //############################################################################
 

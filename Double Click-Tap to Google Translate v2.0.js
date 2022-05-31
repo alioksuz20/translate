@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.24
+// @version      2.25
 // @description  try to take over the world!
 // @author       You
 
@@ -367,7 +367,7 @@ $(document).ready(function () {
                     // ---------------------------------------------------------------------------------------------------------------
                     var regex = new RegExp(/^\t*\s*$/);
 
-                    $("span.clickedElementDiziCumle").each(function () {
+                    $("span.clickedElementDiziCumle, span.clickedElementDiziCevrildi").each(function () {
                         if ( regex.test($(this).html())) {
                             console.log("span BOŞ");
                             $(this).prev("br").remove();
@@ -375,13 +375,6 @@ $(document).ready(function () {
                         }
                     });
 
-                    $("span.clickedElementDiziCeviri.clickedElementDiziCevrildi").each(function () {
-                        if ( regex.test($(this).html())) {
-                            console.log("span BOŞ");
-                            $(this).prev("br").remove();
-                            $(this).remove();
-                        }
-                    });
                     // ---------------------------------------------------------------------------------------------------------------
 
 

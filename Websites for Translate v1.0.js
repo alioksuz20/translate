@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.07
+// @version      1.08
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -83,7 +83,10 @@ $(document).ready(function() {
         $("div.audio_play-pause").addClass("play");
 
 
+        //-----------------------------------------------------------------------------
         $("body").on('click', "div.audio_play-pause", function () {
+
+            // do Something here;
             var audio = $('audio')[0];
             if ( !audio.paused ) {
                 audio.pause();
@@ -94,7 +97,19 @@ $(document).ready(function() {
                 $("div.audio_play-pause").removeClass("play");
                 $("div.audio_play-pause").addClass("pause");
             }
+
         });
+        //-----------------------------------------------------------------------------
+
+
+        // audio kontrolu aktif iken Space tuşuna bastığımızda play/pause düğmemize çift tıklanmasını önlemek için:
+        //-----------------------------------------------------------------------------
+        $("audio").on('focus', function () {
+            $(this).blur();
+            $("div.audio_play-pause").focus();
+        });
+        //-----------------------------------------------------------------------------
+
 
 
         $("div.audio audio").on('play', function () {

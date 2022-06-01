@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.08
+// @version      1.09
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -149,33 +149,41 @@ $(document).ready(function() {
                 .replace(/<br>\s/g,'');
         });
 
-        // Space tuşu ile ses kaydını oynat/durdur:
-        $(document).on('keypress', function (e) {
-            // console.log(e.which);
-            if (e.which == '32') { // SPACE
-                e.preventDefault();
-                $("div.audio_play-pause").trigger("click");
-            }
-        });
 
-        // audio kontrolu aktif iken Space tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
-        $(document).on('keyup', function (e) {
-            // console.log(e.which);
-            if (e.which == '32') { // SPACE
-                e.preventDefault();
-            }
-        });
+
+
 
 
         // Sayfa yüklendiğinde; "Script" dışındaki sekmelerde play/pause düğmemizi ve "audio" oynatıcısını gizleyelim:
         if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
             $("div.audio_play-pause").hide();
             $("div.audio").hide();
+            $(document).off('keyup.spaceButton'); // Fonksiyon iptal
+            $(document).off('keypress.spaceButton'); // Fonksiyon iptal
+
         } else {
             $("div.audio_play-pause").show();
             $("div.audio").show();
             $('div.audio').css('position', 'fixed');
             $('div.audio').css('bottom', '0px');
+
+            // audio kontrolu aktif iken Space tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
+            $(document).on('keyup.spaceButton', function (e) {
+                // console.log(e.which);
+                if (e.which == '32') { // SPACE
+                    e.preventDefault();
+                }
+            });
+
+            // Space tuşu ile ses kaydını oynat/durdur:
+            $(document).on('keypress.spaceButton', function (e) {
+                // console.log(e.which);
+                if (e.which == '32') { // SPACE
+                    e.preventDefault();
+                    $("div.audio_play-pause").trigger("click");
+                }
+            });
+
         }
 
         // Sekmelere tıkladığımızda; "Script" dışındaki sekmelerde play/pause düğmemizi ve "audio" oynatıcısını gizleyelim:
@@ -184,12 +192,34 @@ $(document).ready(function() {
             if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
                 $("div.audio_play-pause").hide();
                 $("div.audio").hide();
+                $(document).off('keyup.spaceButton'); // Fonksiyon iptal
+                $(document).off('keypress.spaceButton'); // Fonksiyon iptal
+
             } else {
                 $("div.audio_play-pause").show();
                 $("div.audio").show();
                 $('div.audio').css('position', 'fixed');
                 $('div.audio').css('bottom', '0px');
+
+                // audio kontrolu aktif iken Space tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
+                $(document).on('keyup.spaceButton', function (e) {
+                    // console.log(e.which);
+                    if (e.which == '32') { // SPACE
+                        e.preventDefault();
+                    }
+                });
+
+                // Space tuşu ile ses kaydını oynat/durdur:
+                $(document).on('keypress.spaceButton', function (e) {
+                    // console.log(e.which);
+                    if (e.which == '32') { // SPACE
+                        e.preventDefault();
+                        $("div.audio_play-pause").trigger("click");
+                    }
+                });
+
             }
+
         });
 
         // if ($("div.container ul.tabs li.selected a").text() == "Script") {

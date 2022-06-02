@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v2
 // @namespace    http://tampermonkey.net/
-// @version      2.25
+// @version      2.26
 // @description  try to take over the world!
 // @author       You
 
@@ -23,9 +23,6 @@
 
 $(document).ready(function () {
 
-
-
-
     //****************************************************
 
     // | tap | doubletap | press | drag | flick | (flick not working!)
@@ -36,7 +33,6 @@ $(document).ready(function () {
     //     });
 
     //****************************************************
-
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
@@ -85,12 +81,7 @@ $(document).ready(function () {
 
     }, 1000);
 
-    /*
-    $("body").on("dblclick", "span.storyimage img.loaded", function (e) {
-        $(this).parents('span.storyimage').remove();
-        // $(this).remove();
-    });
-    */
+
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
@@ -100,47 +91,6 @@ $(document).ready(function () {
     var is_Android = navigator.platform.toLowerCase().indexOf("linux") > -1; // true. navigator.platform = "Linux aarch64"
 
 
-    // JQuery e selectText() fonksiyonu ekliyoruz. Bu Parent text i seçmemize yarıyor...
-    jQuery.fn.selectText = function () {
-        this.find('input').each(function () {
-            if ($(this).prev().length == 0 || !$(this).prev().hasClass('p_copy')) {
-                $('<p class="p_copy" style="position: absolute; z-index: -1;"></p>').insertBefore($(this));
-            }
-            $(this).prev().html($(this).val());
-        });
-        var doc = document;
-        var element = this[0];
-        // console.log(this, element);
-        if (doc.body.createTextRange) {
-            var range = document.body.createTextRange();
-            range.moveToElementText(element);
-            range.select();
-        } else if (window.getSelection) {
-            var selection = window.getSelection();
-            var range = document.createRange();
-            range.selectNodeContents(element);
-            selection.removeAllRanges();
-            selection.addRange(range);
-        }
-    };
-
-    /*
-    function copyToClipboard(element) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-    }
-    */
-
-    function blink_text(element) {
-        $(element).fadeOut(200);
-        $(element).fadeIn(200);
-    }
-
-
-    //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
     $("body").on("click", ".clickedElementDiziCumle", function () {
 
@@ -365,18 +315,25 @@ $(document).ready(function () {
 
                     // ELLLO.org gibi sitelerde içi boş (sadece tab ve boşluk var) çıkan span elemanlarını çeviriden sonra sildirelim:
                     // ---------------------------------------------------------------------------------------------------------------
-                    var regex = new RegExp(/^\t*\s*$/);
+                    var regex_ELLLO = new RegExp(/^\t*\s*$/);
 
                     $("span.clickedElementDiziCumle, span.clickedElementDiziCevrildi").each(function () {
-                        if ( regex.test($(this).html())) {
+                        if ( regex_ELLLO.test($(this).html())) {
                             console.log("span BOŞ");
                             $(this).prev("br").remove();
                             $(this).remove();
                         }
                     });
-
                     // ---------------------------------------------------------------------------------------------------------------
 
+
+                    // quodb.com da altyazıların başındaki zaman bilgisini çeviriden sonra sildirelim:
+                    // ---------------------------------------------------------------------------------------------------------------
+                    $("span.clickedElementDiziCumle, span.clickedElementDiziCevrildi").html(function() {
+                        return this.innerHTML.replace(/\d\d:\d\d:\d\d/, "");
+                    });
+                    $("span.clickedElementDiziCumle, span.clickedElementDiziCevrildi").css('font-weight','400');
+                    // ---------------------------------------------------------------------------------------------------------------
 
 
                 }
@@ -456,6 +413,50 @@ $(document).ready(function () {
 
 
 
+
+
+// JQuery e selectText() fonksiyonu ekliyoruz. Bu Parent text i seçmemize yarıyor...
+jQuery.fn.selectText = function () {
+    this.find('input').each(function () {
+        if ($(this).prev().length == 0 || !$(this).prev().hasClass('p_copy')) {
+            $('<p class="p_copy" style="position: absolute; z-index: -1;"></p>').insertBefore($(this));
+        }
+        $(this).prev().html($(this).val());
+    });
+    var doc = document;
+    var element = this[0];
+    var range;
+    // console.log(this, element);
+    if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+};
+
+/*
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+    */
+
+function blink_text(element) {
+    $(element).fadeOut(200);
+    $(element).fadeIn(200);
+}
+
+
+//████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
 //----------------------------------------------

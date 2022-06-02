@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.09
+// @version      1.10
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -9,6 +9,7 @@
 // @match        https://*.medium.com/*
 // @match        https://*.theidioms.com/*
 // @match        https://*.elllo.org/*
+// @match        https://*.quodb.com/*
 
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js
 // @run-at       document-end
@@ -151,15 +152,12 @@ $(document).ready(function() {
 
 
 
-
-
-
         // Sayfa yüklendiğinde; "Script" dışındaki sekmelerde play/pause düğmemizi ve "audio" oynatıcısını gizleyelim:
         if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
             $("div.audio_play-pause").hide();
             $("div.audio").hide();
+            $(document).off('keydown.spaceButton'); // Fonksiyon iptal
             $(document).off('keyup.spaceButton'); // Fonksiyon iptal
-            $(document).off('keypress.spaceButton'); // Fonksiyon iptal
 
         } else {
             $("div.audio_play-pause").show();
@@ -167,18 +165,18 @@ $(document).ready(function() {
             $('div.audio').css('position', 'fixed');
             $('div.audio').css('bottom', '0px');
 
-            // audio kontrolu aktif iken Space tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
-            $(document).on('keyup.spaceButton', function (e) {
+            // audio kontrolu aktif iken Space veya Enter tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
+            $(document).on('keydown.spaceButton', function (e) {
                 // console.log(e.which);
-                if (e.which == '32') { // SPACE
+                if (e.which == '32' || e.which == '13') { // SPACE or ENTER
                     e.preventDefault();
                 }
             });
 
-            // Space tuşu ile ses kaydını oynat/durdur:
-            $(document).on('keypress.spaceButton', function (e) {
+            // Ayrıca SPACE, ENTER, Numlock(0) tuşları ile ses kaydını oynat/durdur:
+            $(document).on('keyup.spaceButton', function (e) {
                 // console.log(e.which);
-                if (e.which == '32') { // SPACE
+                if (e.which == '32' || e.which == '13' || e.which == '96' ) { // SPACE, ENTER, Numlock(0)
                     e.preventDefault();
                     $("div.audio_play-pause").trigger("click");
                 }
@@ -192,8 +190,8 @@ $(document).ready(function() {
             if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
                 $("div.audio_play-pause").hide();
                 $("div.audio").hide();
+                $(document).off('keydown.spaceButton'); // Fonksiyon iptal
                 $(document).off('keyup.spaceButton'); // Fonksiyon iptal
-                $(document).off('keypress.spaceButton'); // Fonksiyon iptal
 
             } else {
                 $("div.audio_play-pause").show();
@@ -201,18 +199,18 @@ $(document).ready(function() {
                 $('div.audio').css('position', 'fixed');
                 $('div.audio').css('bottom', '0px');
 
-                // audio kontrolu aktif iken Space tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
-                $(document).on('keyup.spaceButton', function (e) {
+                // audio kontrolu aktif iken Space veya Enter tuşuna basınca click yapmasın. (Prevent space button from triggering any other button click in jQuery. It's keyup that triggers button clicks.)
+                $(document).on('keydown.spaceButton', function (e) {
                     // console.log(e.which);
-                    if (e.which == '32') { // SPACE
+                    if (e.which == '32' || e.which == '13') { // SPACE or ENTER
                         e.preventDefault();
                     }
                 });
 
-                // Space tuşu ile ses kaydını oynat/durdur:
-                $(document).on('keypress.spaceButton', function (e) {
+                // Ayrıca SPACE, ENTER, Numlock(0) tuşları ile ses kaydını oynat/durdur:
+                $(document).on('keyup.spaceButton', function (e) {
                     // console.log(e.which);
-                    if (e.which == '32') { // SPACE
+                    if (e.which == '32' || e.which == '13' || e.which == '96' ) { // SPACE, ENTER, Numlock(0)
                         e.preventDefault();
                         $("div.audio_play-pause").trigger("click");
                     }
@@ -221,6 +219,26 @@ $(document).ready(function() {
             }
 
         });
+
+
+
+
+        // Left tuşu ile ses kaydını 2sn. geriye alalım:
+        $(document).on('keydown.leftButton', function (e) {
+            // console.log(e.which);
+            if (e.which == '37') { // LEFT
+                $("audio").prop("currentTime",$("audio").prop("currentTime") -2 );
+            }
+        });
+
+        // Right tuşu ile ses kaydını 2sn. ileriye alalım:
+        $(document).on('keydown.leftButton', function (e) {
+            // console.log(e.which);
+            if (e.which == '39') { // RIGHT
+                $("audio").prop("currentTime",$("audio").prop("currentTime") +2 );
+            }
+        });
+
 
         // if ($("div.container ul.tabs li.selected a").text() == "Script") {
         //     $('div.audio').css('position', 'fixed');
@@ -234,6 +252,25 @@ $(document).ready(function() {
     }
 
     //############################################################################
+
+
+
+    //████████████████████████   Quodb.com   █████████████████████████████████
+
+    if (window.location.href.indexOf("https://www.quodb.com") == 0) {
+        setTimeout(function () {
+            $("a.btn.btn-mini[rel='popover']").trigger("click")
+        }, 1000);
+    }
+
+    //############################################################################
+
+
+
+
+
+
+
 
     //     $("body").on("keydown", function (e) {
     //         e = e || window.event;

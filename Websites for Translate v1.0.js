@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.10
+// @version      1.11
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -83,6 +83,9 @@ $(document).ready(function() {
         $("body").append("<div class='audio_play-pause'/>");
         $("div.audio_play-pause").addClass("play");
 
+        $("body").append("<div class='audio_backward'/>");
+        $("body").append("<div class='audio_forward'/>");
+
 
         //-----------------------------------------------------------------------------
         $("body").on('click', "div.audio_play-pause", function () {
@@ -99,6 +102,15 @@ $(document).ready(function() {
                 $("div.audio_play-pause").addClass("pause");
             }
 
+        });
+
+
+        $("body").on('click', "div.audio_backward", function () {
+            $("audio").prop("currentTime",$("audio").prop("currentTime") -2 );
+        });
+
+        $("body").on('click', "div.audio_forward", function () {
+            $("audio").prop("currentTime",$("audio").prop("currentTime") +2 );
         });
         //-----------------------------------------------------------------------------
 

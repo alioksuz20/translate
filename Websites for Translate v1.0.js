@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.11
+// @version      1.12
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -166,14 +166,20 @@ $(document).ready(function() {
 
         // Sayfa yüklendiğinde; "Script" dışındaki sekmelerde play/pause düğmemizi ve "audio" oynatıcısını gizleyelim:
         if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
-            $("div.audio_play-pause").hide();
             $("div.audio").hide();
+            $("div.audio_play-pause").hide();
+            $("div.audio_backward").hide();
+            $("div.audio_forward").hide();
+
             $(document).off('keydown.spaceButton'); // Fonksiyon iptal
             $(document).off('keyup.spaceButton'); // Fonksiyon iptal
 
         } else {
-            $("div.audio_play-pause").show();
             $("div.audio").show();
+            $("div.audio_play-pause").show();
+            $("div.audio_backward").show();
+            $("div.audio_forward").show();
+
             $('div.audio').css('position', 'fixed');
             $('div.audio').css('bottom', '0px');
 
@@ -200,14 +206,20 @@ $(document).ready(function() {
         $("div.container ul.tabs li a").on('click', function () {
             //console.log($("div.container ul.tabs li.selected a").text());
             if ($("div.container ul.tabs li.selected a").text() == "Vocab" || $("div.container ul.tabs li.selected a").text() == "Quiz") {
-                $("div.audio_play-pause").hide();
                 $("div.audio").hide();
+                $("div.audio_play-pause").hide();
+                $("div.audio_backward").hide();
+                $("div.audio_forward").hide();
+
                 $(document).off('keydown.spaceButton'); // Fonksiyon iptal
                 $(document).off('keyup.spaceButton'); // Fonksiyon iptal
 
             } else {
-                $("div.audio_play-pause").show();
                 $("div.audio").show();
+                $("div.audio_play-pause").show();
+                $("div.audio_backward").show();
+                $("div.audio_forward").show();
+
                 $('div.audio').css('position', 'fixed');
                 $('div.audio').css('bottom', '0px');
 
@@ -244,10 +256,12 @@ $(document).ready(function() {
         });
 
         // Right tuşu ile ses kaydını 2sn. ileriye alalım:
-        $(document).on('keydown.leftButton', function (e) {
+        $(document).on('keydown.rightButton', function (e) {
             // console.log(e.which);
             if (e.which == '39') { // RIGHT
                 $("audio").prop("currentTime",$("audio").prop("currentTime") +2 );
+                // $("div.audio_forward").css({outline: "0px solid transparent"}).animate({outlineWidth: '6px', outlineColor: '#FF6347'}, 200);
+                // $("div.audio_forward").animate({outlineWidth: '0px', outlineColor: '#FF6347'}, 200);
             }
         });
 
@@ -272,7 +286,7 @@ $(document).ready(function() {
     if (window.location.href.indexOf("https://www.quodb.com") == 0) {
         setTimeout(function () {
             $("a.btn.btn-mini[rel='popover']").trigger("click")
-        }, 1000);
+        }, 2000);
     }
 
     //############################################################################

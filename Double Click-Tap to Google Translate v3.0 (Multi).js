@@ -71,11 +71,12 @@ var JQuery306 = jQuery.noConflict(true);
             //****************************************************
 
             // | tap | doubletap | press | drag | flick | (flick not working!)
-            $('body').on('drag', 'img, video',function(e) {
+            $('body').on('drag', 'img, video, iframe',function(e) {
                 console.log(this, e);
                 if ('horizontal' == e.orientation) {
                     if (-1 == e.direction) { // left
                         $(this).parents("div[id^='ArticleBody-InlineImage']").remove(); // CNBC
+                        $("div.SingleVideo").remove(); // abcnews.go.com
                         $(this).remove(); // Bunu sona koyalım
                     }
                     else { // right
@@ -248,6 +249,10 @@ var JQuery306 = jQuery.noConflict(true);
 
                             if (clickedElementBROS.eq(i).text().length == 0) { // Kardeş Karakter Sayısı "0" ise ÇIK...
                                 clearInterval(to500CharCount);
+
+                                console.log((i+1) + ". Kardeş Karakter Sayısı: " + clickedElementBROS.eq(i).text().length);
+                                console.log("Kardeş Karakter Sayısı '0', ÇIKIYORUZ...");
+
                                 metniCeviriyeHazirla();
                                 metniCevir();
 

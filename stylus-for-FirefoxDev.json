@@ -107,7 +107,7 @@
     ],
     "updateDate": 1650573928508,
     "_id": "e7055f06-1f18-4b61-9d2b-e2440cec6f4c",
-    "_rev": 1654115659715,
+    "_rev": 1654494644903,
     "id": 2
   },
   {
@@ -121,7 +121,7 @@
     ],
     "updateDate": 1647426822982,
     "_id": "72e24c7d-8527-4c0e-a779-262dc2360dc9",
-    "_rev": 1654452506360,
+    "_rev": 1654499544930,
     "id": 6
   },
   {
@@ -138,7 +138,7 @@
     ],
     "updateDate": 1654451104944,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1654452508065,
+    "_rev": 1654494644904,
     "id": 7
   },
   {
@@ -147,7 +147,7 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.article-video-slot,\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'],\nform#srchfrm,\nmsn-article-image {\n    display: none !important;\n}\nimg {\n    /* filter: sepia(100%) grayscale(90%)!important; */\n    opacity: .7 !important;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\ndiv.spacerpromo {\n    display: none;\n}\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio{\n    width: -moz-available !important;   \n    z-index: 9999 !important; \n    left: 0 !important;\n}\n\naudio {\n    width: -moz-available !important;\n    background-color: black !important;\n    opacity: .6 !important;\n}\n\ndiv.audio {   \n    background-color: black;\n    opacity: 1 !important;\n}\n\ndiv.audio_play-pause {\n    position: fixed;\n\ttop: 270px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n}\ndiv.audio_play-pause.play {\n    background: url(\"https://img.icons8.com/cotton/344/circled-play.png\") no-repeat;\n    background-size: contain;\n}\ndiv.audio_play-pause.pause {\n    background: url(https://img.icons8.com/cotton/344/circled-pause.png) no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_backward {\n    position: fixed;\n\ttop: 320px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-left--v1.png\") no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_forward {\n    position: fixed;\n\ttop: 370px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-right--v1.png\") no-repeat;\n    background-size: contain;\n}\n\n",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'] {\n    display: none !important;\n}\ndiv.grid-DS-EntryPoint1-1,\ndiv.article-video-slot,\nmsn-article-image,\nimg {\n    /* filter: sepia(100%) grayscale(90%)!important; */\n    opacity: .7 !important;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\ndiv.spacerpromo {\n    display: none;\n}\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio{\n    width: -moz-available !important;   \n    z-index: 9999 !important; \n    left: 0 !important;\n}\n\naudio {\n    width: -moz-available !important;\n    background-color: black !important;\n    opacity: .6 !important;\n}\n\ndiv.audio {   \n    background-color: black;\n    opacity: 1 !important;\n}\n\ndiv.audio_play-pause {\n    position: fixed;\n\ttop: 270px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n}\ndiv.audio_play-pause.play {\n    background: url(\"https://img.icons8.com/cotton/344/circled-play.png\") no-repeat;\n    background-size: contain;\n}\ndiv.audio_play-pause.pause {\n    background: url(https://img.icons8.com/cotton/344/circled-pause.png) no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_backward {\n    position: fixed;\n\ttop: 320px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-left--v1.png\") no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_forward {\n    position: fixed;\n\ttop: 370px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-right--v1.png\") no-repeat;\n    background-size: contain;\n}\n\n",
         "domains": [
           "msn.com",
           "cnbc.com",
@@ -155,9 +155,9 @@
         ]
       }
     ],
-    "updateDate": 1654173653693,
+    "updateDate": 1654506724934,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1654452504540,
+    "_rev": 1654506724934,
     "id": 8
   },
   {
@@ -173,7 +173,7 @@
     ],
     "updateDate": 1651043188259,
     "_id": "c1f183a1-af5f-4a18-a2f1-4b09e04aef3e",
-    "_rev": 1654115659715,
+    "_rev": 1654494644904,
     "id": 9
   },
   {
@@ -186,7 +186,7 @@
     ],
     "updateDate": 1651444364345,
     "_id": "f6b03bca-bd8a-4046-b215-35713f912115",
-    "_rev": 1654115659715,
+    "_rev": 1654494644904,
     "id": 10
   },
   {
@@ -203,7 +203,7 @@
     ],
     "updateDate": 1652271891246,
     "_id": "7f982589-94c8-405e-9141-c755e879f93a",
-    "_rev": 1654115659715,
+    "_rev": 1654494644904,
     "id": 11
   },
   {
@@ -222,7 +222,7 @@
     ],
     "updateDate": 1652343271363,
     "_id": "b83953d0-6246-4b60-9f7f-84f15c814401",
-    "_rev": 1654115659715,
+    "_rev": 1654494644904,
     "id": 12
   }
 ]

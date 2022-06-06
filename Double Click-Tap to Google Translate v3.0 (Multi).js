@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v3 (Multi)
 // @namespace    http://tampermonkey.net/
-// @version      3.01
+// @version      3.02
 // @description  try to take over the world!
 // @author       You
 
@@ -28,7 +28,10 @@
 
 var JQuery306 = jQuery.noConflict(true);
 
+
 (function ($) {
+
+
     // code that needs 3.0.6 goes here
     $(document).ready(function () {
 
@@ -46,7 +49,7 @@ var JQuery306 = jQuery.noConflict(true);
         //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
-        // Haber/makale içindeki resimlerin click olayını kaldırıp, çift tıklama ile resmi silme fonksiyonu tanımlayalım:
+        // Haber/makale içindeki resimlerin click olayını kaldırıp, "drag" ile resmi silme fonksiyonu tanımlayalım:
         setTimeout(function () {
 
             // $("img").contents().unwrap();
@@ -82,6 +85,7 @@ var JQuery306 = jQuery.noConflict(true);
                     else { // right
                         //Galeri ise
                         $(this).parents("div[class^='gallery_carouselContainer']").remove(); // MSN
+                        $(this).parents("div.article-image-container").remove(); // MSN
 
                     }
                 }
@@ -141,27 +145,107 @@ var JQuery306 = jQuery.noConflict(true);
         // Bir kelimenin üstüne çift tıklayarak Parent ını seçelim. Kelimeden paragraf seçme gibi...
         $("body").on("click", function (x) {
 
-            if ($(x.target).is(".clickedElementDiziCumle")
+
+            var clickedElement = $(x.target);
+            var clickedElementTagName = clickedElement.prop("tagName");
+
+            clickedElement.not('.clickedElementDiziCumleTranslated').css('border-top','3px solid red').css('padding-top','6px');
+
+            function cevrilmeyeceklerMesaj() {
+                // Do nothing, Bunları çevirme!..
+                console.log("Tıklanan öğe: " + clickedElementTagName);
+                console.log("ÇEVRİLMEYECEK bir öğeye tıkladınız! ÇEVİRİ İPTAL.");
+            }
+
+            if ( $(x.target).is("MSN-ARTICLE-IMAGE") ) {
+                $("span.image-caption").addClass("tikladigimizMetninKardesleri");
+                $("span.image-caption").click();
+            }
+
+
+            if ( $(x.target).hasClass("clickedElementDiziCumle") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' hasClass("clickedElementDiziCumle") ');
+            }
+            else if ( $(x.target).hasClass("clickedElementDiziCumleTranslated") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' hasClass("clickedElementDiziCumleTranslated") ');
+            }
+            else if ( $(x.target).hasClass("clickedElementDiziCeviri") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' hasClass("clickedElementDiziCeviri") ');
+            }
+            else if ( $(x.target).hasClass("clickedElementDiziCevrildi") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' hasClass("clickedElementDiziCevrildi") ');
+            }
+            else if ( $(x.target).hasClass("tikladigimizMetninKardesleri") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' hasClass("tikladigimizMetninKardesleri") ');
+            }
+            else if ( $(x.target).hasClass("sectigimizMetin") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' hasClass("sectigimizMetin") ');
+            }
+
+            else if ( $(x.target).children(".sectigimizMetin").length ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' children(".sectigimizMetin").length ');
+            }
+
+            else if ( $(x.target).is("button") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' is("button") ');
+            }
+            else if ( $(x.target).is("a") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' is("a") ');
+            }
+            else if ( $(x.target).is("a span") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' is("a span") ');
+            }
+            else if ( $(x.target).is("img") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' is("img") ');
+            }
+            else if ( $(x.target).is("ul") ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' is("ul") ');
+            }
+            else if ( $(x.target).has("audio").length > 0 ) {
+                cevrilmeyeceklerMesaj();
+                console.log(' has("audio").length > 0 ');
+            }
+            else if ( $(x.target).is("p span") || $(x.target).is("p strong") ) {
+                $(x.target).parent().click();
+            }
+            else {
+                console.log("ÇEVRİLECEK bir öğeye tıkladınız, ÇEVİRİYE DEVAM...");
+
+
+
+
+                /*
+                            if ( $(x.target).is(".clickedElementDiziCumle")
                 || $(x.target).is(".clickedElementDiziCumleTranslated")
                 || $(x.target).is(".clickedElementDiziCeviri")
                 || $(x.target).is(".clickedElementDiziCevrildi")
                 || $(x.target).is(".tikladigimizMetninKardesleri")
                 || $(x.target).is(".sectigimizMetin")
+
                 || $(x.target).children(".sectigimizMetin").length
                 || $(x.target).is("button")
                 || $(x.target).is("a")
                 || $(x.target).is("a span")
                 || $(x.target).is("img")
                 || $(x.target).has('audio').length > 0
-                || $(x.target).has('img').length > 0
-                || $(x.target).is("ul")) {
+                //|| $(x.target).has('img').length > 0
+                || $(x.target).is("ul")
+               ) {
                 // Do nothing, Bunları çevirme!..
-                var clickedElement = $(x.target);
-                var clickedElementTagName = clickedElement.prop("tagName");
-                console.log("Tıklanan öğe: " + clickedElementTagName);
-                console.log("ÇEVRİLMEYECEK bir öğeye tıkladınız! ÇEVİRİ İPTAL.");
-            } else {
-                console.log("ÇEVRİLECEK bir öğeye tıkladınız, ÇEVİRİYE DEVAM...");
+
+                 */
 
 
                 /*
@@ -171,48 +255,24 @@ var JQuery306 = jQuery.noConflict(true);
         }
         */
 
-                //********************************************************
 
-                // If writing out .prop("tagName") is tedious, you can create a custom function like so:
-                // jQuery.fn.tagName = function() {
-                //   return this.prop("tagName");
-                // };
-                // Examples:
-                // jQuery("<a>").tagName(); //==> "A"
-                // jQuery("<h1>").tagName(); //==> "H1"
-
-                var clickedElement = $(x.target);
-                var clickedElementTagName = clickedElement.prop("tagName");
                 console.log("Tıklanan öğe: " + clickedElementTagName);
-
-                // Çift tıklanan öğe IMG ise ÇEVİRİ İPTAL:
-                // if (clickedElementTagName == "IMG") {
-                //     return;
-                // }
 
                 clickedElement.find('strong').contents().unwrap();
 
-                //********************************************************
-
-                // İlk olarak varsa önceki seçtiğimiz metni geri getirip, klonunu da silelim;
-
-                // $(".sectigimizMetin").show();
-                // $(".sectigimizMetin").removeClass('sectigimizMetin');
-                // $(".klonladigimizMetin").remove();
-
-
-                // Tıkladığımız Tag (p,h1,li vb.) metnini seçtirelim:
-                //$(selectedElementParentNode).selectText();
-                //clickedElement.selectText();
-
-                console.log("Tıklanan Öğenin Karakter Sayısı:");
-                console.log(clickedElement.text().length);
-                console.log("----------- Tıklanan Metin-----------\n" + clickedElement.text() + "\n-------------------------------------");
 
                 // Panoya kopyalayıp; Android de Tasker ile Windows da Firefox >> ReadAloud ve ReadAloud.ahk ile okutalım:
                 //document.execCommand("copy");
 
-
+                if ( clickedElement.text().length > 1000 ) {
+                    console.log("Tıklanan Öğenin Karakter Sayısı (" + clickedElement.text().length + ") 1000'den FAZLA. ÇEVİRİ İPTAL...");
+                    blink_text(clickedElement);
+                    return;
+                } else {
+                    console.log("Tıklanan Öğenin Karakter Sayısı:");
+                    console.log(clickedElement.text().length);
+                    console.log("----------- Tıklanan Metin-----------\n" + clickedElement.text() + "\n-------------------------------------");
+                }
                 //-------------------------------------------
 
                 var clickedElementBROS = clickedElement.nextAll().not('.sectigimizMetin');
@@ -238,7 +298,7 @@ var JQuery306 = jQuery.noConflict(true);
 
                     } else { // Tıklanan Öğeden Sonraki KARDEŞ Sayısı "0" değilse;
 
-                        if (totalBROSCharCount > 600) {
+                        if (totalBROSCharCount > 300) {
                             clearInterval(to500CharCount);
                             console.log("Toplam Kardeş Karakter Sayısı: " + totalBROSCharCount + " oldu. Bu gıdaa yetee!..");
                             metniCeviriyeHazirla();
@@ -263,7 +323,7 @@ var JQuery306 = jQuery.noConflict(true);
                                 console.log((i+1) + ". Kardeş Metni----------------------\n" + clickedElementBROS.eq(i).text() + "\n-------------------------------------");
 
                                 totalBROSCharCount += clickedElementBROS.eq(i).text().length;
-                                console.log("TOPLAM KARDEŞ KARAKTER SAYISI: " + totalBROSCharCount + " / 600");
+                                console.log("TOPLAM KARDEŞ KARAKTER SAYISI: " + totalBROSCharCount + " / 300");
 
                                 clickedElementBROS.eq(i).addClass("tikladigimizMetninKardesleri");
                                 clickedElementBROS.eq(i).css('color','lime');
@@ -302,7 +362,6 @@ var JQuery306 = jQuery.noConflict(true);
 
                         var clickedElementCURRENT = $("*[id='" + clickedElementID + "']");
                         //console.log(clickedElementCURRENT.text());
-
 
 
                         // Metnimizi cümlelere ayıralım:

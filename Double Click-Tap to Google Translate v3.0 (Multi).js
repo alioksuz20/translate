@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v3 (Multi)
 // @namespace    http://tampermonkey.net/
-// @version      3.02
+// @version      3.03
 // @description  try to take over the world!
 // @author       You
 
@@ -149,8 +149,6 @@ var JQuery306 = jQuery.noConflict(true);
             var clickedElement = $(x.target);
             var clickedElementTagName = clickedElement.prop("tagName");
 
-            clickedElement.not('.clickedElementDiziCumleTranslated').css('border-top','3px solid red').css('padding-top','6px');
-
             function cevrilmeyeceklerMesaj() {
                 // Do nothing, Bunları çevirme!..
                 console.log("Tıklanan öğe: " + clickedElementTagName);
@@ -183,14 +181,14 @@ var JQuery306 = jQuery.noConflict(true);
                 cevrilmeyeceklerMesaj();
                 console.log(' hasClass("tikladigimizMetninKardesleri") ');
             }
-            else if ( $(x.target).hasClass("sectigimizMetin") ) {
+            else if ( $(x.target).hasClass("cevrilmisMetin") ) {
                 cevrilmeyeceklerMesaj();
-                console.log(' hasClass("sectigimizMetin") ');
+                console.log(' hasClass("cevrilmisMetin") ');
             }
 
-            else if ( $(x.target).children(".sectigimizMetin").length ) {
+            else if ( $(x.target).children(".cevrilmisMetin").length ) {
                 cevrilmeyeceklerMesaj();
-                console.log(' children(".sectigimizMetin").length ');
+                console.log(' children(".cevrilmisMetin").length ');
             }
 
             else if ( $(x.target).is("button") ) {
@@ -232,9 +230,9 @@ var JQuery306 = jQuery.noConflict(true);
                 || $(x.target).is(".clickedElementDiziCeviri")
                 || $(x.target).is(".clickedElementDiziCevrildi")
                 || $(x.target).is(".tikladigimizMetninKardesleri")
-                || $(x.target).is(".sectigimizMetin")
+                || $(x.target).is(".cevrilmisMetin")
 
-                || $(x.target).children(".sectigimizMetin").length
+                || $(x.target).children(".cevrilmisMetin").length
                 || $(x.target).is("button")
                 || $(x.target).is("a")
                 || $(x.target).is("a span")
@@ -275,7 +273,7 @@ var JQuery306 = jQuery.noConflict(true);
                 }
                 //-------------------------------------------
 
-                var clickedElementBROS = clickedElement.nextAll().not('.sectigimizMetin');
+                var clickedElementBROS = clickedElement.nextAll().not('.cevrilmisMetin');
                 console.log("Tıklanan Öğeden Sonraki KARDEŞ Sayısı:");
                 console.log(clickedElementBROS.length);
 
@@ -284,7 +282,7 @@ var JQuery306 = jQuery.noConflict(true);
 
                 var to500CharCount = setInterval(function () {
 
-                    if (clickedElementBROS.eq(i).hasClass('sectigimizMetin') || clickedElementBROS.eq(i).children().hasClass('sectigimizMetin')) {
+                    if (clickedElementBROS.eq(i).hasClass('cevrilmisMetin') || clickedElementBROS.eq(i).children().hasClass('cevrilmisMetin')) {
                         clearInterval(to500CharCount);
                         metniCeviriyeHazirla();
                         metniCevir();
@@ -346,7 +344,7 @@ var JQuery306 = jQuery.noConflict(true);
 
                 function metniCeviriyeHazirla() {
 
-                    $(".tikladigimizMetninKardesleri").not('.sectigimizMetin').each(function(index,eleman) {
+                    $(".tikladigimizMetninKardesleri").not('.cevrilmisMetin').each(function(index,eleman) {
 
 
                         function uniqueID() {
@@ -354,10 +352,10 @@ var JQuery306 = jQuery.noConflict(true);
                         }
                         // console.log(uniqueID());
 
-                        var clickedElementID = "sectigimizMetin-" + uniqueID();
+                        var clickedElementID = "cevrilmisMetin-" + uniqueID();
 
                         // Seçili metnimize bir sınıf atayalım:
-                        $(eleman).addClass("sectigimizMetin").attr('id', clickedElementID);
+                        $(eleman).addClass("cevrilmisMetin").attr('id', clickedElementID);
 
 
                         var clickedElementCURRENT = $("*[id='" + clickedElementID + "']");
@@ -418,7 +416,7 @@ var JQuery306 = jQuery.noConflict(true);
                             clickedElementCURRENT_CumleSPAN.removeClass('clickedElementDiziCumleClicked');
                         }, 400);
 
-                        $(".sectigimizMetin").removeClass('tikladigimizMetninKardesleri');
+                        $(".cevrilmisMetin").removeClass('tikladigimizMetninKardesleri');
 
 
                     });
@@ -452,6 +450,11 @@ var JQuery306 = jQuery.noConflict(true);
 
                         // Son çeviri cümlesinden sonraki <br> yi silelim, yoksa ara çok açılıyor!
                         $("span.clickedElementDiziCevrildi").last().next('br').remove();
+
+                        // Çevrilen ilk cümleyi önceki çevirilerden ayırmak için üstüne çizgi çekelim:
+                        $("span.clickedElementDiziCumle").first().addClass('ilkCumleTranslated');
+                        $("span.ilkCumleTranslated").css('border-top','3px solid #710000').css('padding-top','6px');
+
 
                         $("span.clickedElementDiziCumle").addClass('clickedElementDiziCumleTranslated').removeClass('clickedElementDiziCumle');
 

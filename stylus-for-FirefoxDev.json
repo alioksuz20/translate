@@ -130,15 +130,15 @@
     "name": "Double Click/Tap to Google Translate v2",
     "sections": [
       {
-        "code": "\n::selection,\nspan.clickedElementDiziCumleTranslated::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumleTranslated {\n    AAAcolor:  hsl(48, 59%, 50%) !important;\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCeviri {\n    AAAcolor:  hsl(200, 35%, 50%) !important;\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    AAAcolor:  hsl(91, 35%, 50%) !important;\n    color:  hsl(200, 35%, 55%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\n",
+        "code": "\n::selection,\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    AAAcolor:  hsl(48, 59%, 50%) !important;\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\n\nspan.clickedElementDiziCumleTranslated::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumleTranslated {\n    AAAcolor:  hsl(48, 59%, 50%) !important;\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCeviri {\n    AAAcolor:  hsl(200, 35%, 50%) !important;\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    AAAcolor:  hsl(91, 35%, 50%) !important;\n    color:  hsl(200, 35%, 55%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\n",
         "urlPrefixes": [
           "http"
         ]
       }
     ],
-    "updateDate": 1654451104944,
+    "updateDate": 1654584416919,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1654494644904,
+    "_rev": 1654584416919,
     "id": 7
   },
   {

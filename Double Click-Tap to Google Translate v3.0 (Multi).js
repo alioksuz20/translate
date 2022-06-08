@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v3 (Multi)
 // @namespace    http://tampermonkey.net/
-// @version      3.03
+// @version      3.04
 // @description  try to take over the world!
 // @author       You
 
@@ -26,205 +26,194 @@
 // jQuery.noConflict();
 //**********************************************************************
 
-var JQuery306 = jQuery.noConflict(true);
+
+$(document).ready(function () {
+
+    //****************************************************
+
+    // | tap | doubletap | press | drag | flick | (flick not working!)
+    //     $('body').on('flick', '.clickedElementDiziCumle',function(e) {
+    //         //console.log(this, e);
+    //         //console.log($(this).text());
+
+    //     });
+
+    //****************************************************
+
+    //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
-(function ($) {
+    // Haber/makale içindeki resimlerin click olayını kaldırıp, "drag" ile resmi silme fonksiyonu tanımlayalım:
+    setTimeout(function () {
+
+        // $("img").contents().unwrap();
+
+        // Başlığın shadowRoot una erişip içindeki iki div i dışarı çıkardıktan sonra shadowRoot u silelim:
+        if ($('msnews-views-title').length) {
+            $('div.providerInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.viewsHeaderInfoLeft-DS-EntryPoint1-1'));
+            $('div.viewsInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.providerInfo'));
+            $("msnews-views-title").remove();
+        }
 
 
-    // code that needs 3.0.6 goes here
-    $(document).ready(function () {
+        $("img").each(function () {
+            var original, clone;
+            // element with id my-div and its child nodes have some event-handlers
+            original = $(this);
+            clone = original.clone();
+            //
+            original.replaceWith(clone);
+        });
 
         //****************************************************
 
         // | tap | doubletap | press | drag | flick | (flick not working!)
-        //     $('body').on('flick', '.clickedElementDiziCumle',function(e) {
-        //         //console.log(this, e);
-        //         //console.log($(this).text());
+        $('body').on('drag', 'img, video, iframe',function(e) {
+            console.log(this, e);
+            if ('horizontal' == e.orientation) {
+                if (-1 == e.direction) { // left
+                    $(this).parents("div[id^='ArticleBody-InlineImage']").remove(); // CNBC
+                    $("div.SingleVideo").remove(); // abcnews.go.com
+                    $(this).remove(); // Bunu sona koyalım
+                }
+                else { // right
+                    //Galeri ise
+                    $(this).parents("div[class^='gallery_carouselContainer']").remove(); // MSN
+                    $(this).parents("div.article-image-container").remove(); // MSN
 
-        //     });
+                }
+            }
+        });
 
         //****************************************************
 
-        //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-
-        // Haber/makale içindeki resimlerin click olayını kaldırıp, "drag" ile resmi silme fonksiyonu tanımlayalım:
-        setTimeout(function () {
-
-            // $("img").contents().unwrap();
-
-            // Başlığın shadowRoot una erişip içindeki iki div i dışarı çıkardıktan sonra shadowRoot u silelim:
-            if ($('msnews-views-title').length) {
-                $('div.providerInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.viewsHeaderInfoLeft-DS-EntryPoint1-1'));
-                $('div.viewsInfo', $('msnews-views-title')[0].shadowRoot).insertAfter($('div.providerInfo'));
-                $("msnews-views-title").remove();
-            }
-
-
-            $("img").each(function () {
-                var original, clone;
-                // element with id my-div and its child nodes have some event-handlers
-                original = $(this);
-                clone = original.clone();
-                //
-                original.replaceWith(clone);
-            });
-
-            //****************************************************
-
-            // | tap | doubletap | press | drag | flick | (flick not working!)
-            $('body').on('drag', 'img, video, iframe',function(e) {
-                console.log(this, e);
-                if ('horizontal' == e.orientation) {
-                    if (-1 == e.direction) { // left
-                        $(this).parents("div[id^='ArticleBody-InlineImage']").remove(); // CNBC
-                        $("div.SingleVideo").remove(); // abcnews.go.com
-                        $(this).remove(); // Bunu sona koyalım
-                    }
-                    else { // right
-                        //Galeri ise
-                        $(this).parents("div[class^='gallery_carouselContainer']").remove(); // MSN
-                        $(this).parents("div.article-image-container").remove(); // MSN
-
-                    }
-                }
-            });
-
-            //****************************************************
-
-        }, 1000);
+    }, 1000);
 
 
 
-        //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+    //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
 
-        var is_Windows = navigator.platform.toLowerCase().indexOf("win32") > -1; // true. navigator.platform = "Win32"
-        var is_Android = navigator.platform.toLowerCase().indexOf("linux") > -1; // true. navigator.platform = "Linux aarch64"
+    var is_Windows = navigator.platform.toLowerCase().indexOf("win32") > -1; // true. navigator.platform = "Win32"
+    var is_Android = navigator.platform.toLowerCase().indexOf("linux") > -1; // true. navigator.platform = "Linux aarch64"
 
 
 
-        $("body").on("click", ".clickedElementDiziCumleTranslated", function () {
+    $("body").on("click", ".clickedElementDiziCumleTranslated", function () {
 
-            // Firefox ın Windows ve Android versiyonlarına göre çalışacak farklı kod parçacıkları:
-            //*************************************************************************************
+        // Firefox ın Windows ve Android versiyonlarına göre çalışacak farklı kod parçacıkları:
+        //*************************************************************************************
 
-            // if (is_Windows) {
-            // Windows ta metni kopyalamadan önce metni seçili hale getirmemiz gerekiyor. Read Aloud ancak seçili metni okuyor:
-            $(this).selectText();
+        // if (is_Windows) {
+        // Windows ta metni kopyalamadan önce metni seçili hale getirmemiz gerekiyor. Read Aloud ancak seçili metni okuyor:
+        $(this).selectText();
 
-            setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
-                document.execCommand("copy");
-            }, 50);
+        setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+            document.execCommand("copy");
+        }, 50);
 
-            setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
-                //document.execCommand("copy");
-                document.getSelection().removeAllRanges();
-            }, 400);
-            blink_text(this);
+        setTimeout(function () { // 200 ms beklemezsek kopyalamıyor!..
+            //document.execCommand("copy");
+            document.getSelection().removeAllRanges();
+        }, 400);
+        blink_text(this);
 
-            //}
+        //}
 
-            /*
+        /*
         if (is_Android) {
             copyToClipboard($(this));
             blink_text(this);
         }
         */
 
-            //*************************************************************************************
+        //*************************************************************************************
 
-        });
+    });
 
-        //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-
-
-        // Bir kelimenin üstüne çift tıklayarak Parent ını seçelim. Kelimeden paragraf seçme gibi...
-        $("body").on("click", function (x) {
+    //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
-            var clickedElement = $(x.target);
-            var clickedElementTagName = clickedElement.prop("tagName");
 
-            function cevrilmeyeceklerMesaj() {
-                // Do nothing, Bunları çevirme!..
-                console.log("Tıklanan öğe: " + clickedElementTagName);
-                console.log("ÇEVRİLMEYECEK bir öğeye tıkladınız! ÇEVİRİ İPTAL.");
-            }
-
-            if ( $(x.target).is("MSN-ARTICLE-IMAGE") ) {
-                $("span.image-caption").addClass("tikladigimizMetninKardesleri");
-                $("span.image-caption").click();
-            }
+    // Bir kelimenin üstüne çift tıklayarak Parent ını seçelim. Kelimeden paragraf seçme gibi...
+    $("body").on("click", function (x) {
 
 
-            if ( $(x.target).hasClass("clickedElementDiziCumle") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' hasClass("clickedElementDiziCumle") ');
-            }
-            else if ( $(x.target).hasClass("clickedElementDiziCumleTranslated") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' hasClass("clickedElementDiziCumleTranslated") ');
-            }
-            else if ( $(x.target).hasClass("clickedElementDiziCeviri") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' hasClass("clickedElementDiziCeviri") ');
-            }
-            else if ( $(x.target).hasClass("clickedElementDiziCevrildi") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' hasClass("clickedElementDiziCevrildi") ');
-            }
-            else if ( $(x.target).hasClass("tikladigimizMetninKardesleri") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' hasClass("tikladigimizMetninKardesleri") ');
-            }
-            else if ( $(x.target).hasClass("cevrilmisMetin") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' hasClass("cevrilmisMetin") ');
-            }
+        var clickedElement = $(x.target);
+        var clickedElementTagName = clickedElement.prop("tagName");
 
-            else if ( $(x.target).children(".cevrilmisMetin").length ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' children(".cevrilmisMetin").length ');
-            }
+        function cevrilmeyeceklerMesaj() {
+            // Do nothing, Bunları çevirme!..
+            console.log("Tıklanan öğe: " + clickedElementTagName);
+            console.log("ÇEVRİLMEYECEK bir öğeye tıkladınız! ÇEVİRİ İPTAL.");
+        }
 
-            else if ( $(x.target).is("button") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' is("button") ');
-            }
-            else if ( $(x.target).is("a") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' is("a") ');
-            }
-            else if ( $(x.target).is("a span") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' is("a span") ');
-            }
-            else if ( $(x.target).is("img") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' is("img") ');
-            }
-            else if ( $(x.target).is("ul") ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' is("ul") ');
-            }
-            else if ( $(x.target).has("audio").length > 0 ) {
-                cevrilmeyeceklerMesaj();
-                console.log(' has("audio").length > 0 ');
-            }
-            else if ( $(x.target).is("p span") || $(x.target).is("p strong") ) {
-                $(x.target).parent().click();
-            }
-            else {
-                console.log("ÇEVRİLECEK bir öğeye tıkladınız, ÇEVİRİYE DEVAM...");
+
+        if ( $(x.target).hasClass("clickedElementDiziCumle") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' hasClass("clickedElementDiziCumle") ');
+        }
+        else if ( $(x.target).hasClass("clickedElementDiziCumleTranslated") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' hasClass("clickedElementDiziCumleTranslated") ');
+        }
+        else if ( $(x.target).hasClass("clickedElementDiziCeviri") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' hasClass("clickedElementDiziCeviri") ');
+        }
+        else if ( $(x.target).hasClass("clickedElementDiziCevrildi") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' hasClass("clickedElementDiziCevrildi") ');
+        }
+        else if ( $(x.target).hasClass("tikladigimizMetninKardesleri") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' hasClass("tikladigimizMetninKardesleri") ');
+        }
+        else if ( $(x.target).hasClass("cevrilmisMetin") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' hasClass("cevrilmisMetin") ');
+        }
+
+        else if ( $(x.target).children(".cevrilmisMetin").length ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' children(".cevrilmisMetin").length ');
+        }
+
+        else if ( $(x.target).is("button") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' is("button") ');
+        }
+        else if ( $(x.target).is("a") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' is("a") ');
+        }
+        else if ( $(x.target).is("a span") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' is("a span") ');
+        }
+        else if ( $(x.target).is("img") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' is("img") ');
+        }
+        else if ( $(x.target).is("ul") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' is("ul") ');
+        }
+        else if ( $(x.target).has("audio").length > 0 ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' has("audio").length > 0 ');
+        }
+        else if ( $(x.target).is("p span") || $(x.target).is("p strong") ) {
+            $(x.target).parent().click();
+        }
+        else {
+            console.log("ÇEVRİLECEK bir öğeye tıkladınız, ÇEVİRİYE DEVAM...");
 
 
 
 
-                /*
+            /*
                             if ( $(x.target).is(".clickedElementDiziCumle")
                 || $(x.target).is(".clickedElementDiziCumleTranslated")
                 || $(x.target).is(".clickedElementDiziCeviri")
@@ -246,7 +235,7 @@ var JQuery306 = jQuery.noConflict(true);
                  */
 
 
-                /*
+            /*
         if ($(this).hasClass("klonDiziCumleSPAN")) {
             $(this).off("dblclick");
             return;
@@ -254,72 +243,82 @@ var JQuery306 = jQuery.noConflict(true);
         */
 
 
-                console.log("Tıklanan öğe: " + clickedElementTagName);
+            console.log("Tıklanan öğe: " + clickedElementTagName);
 
-                clickedElement.find('strong').contents().unwrap();
+            clickedElement.find('strong').contents().unwrap();
 
 
-                // Panoya kopyalayıp; Android de Tasker ile Windows da Firefox >> ReadAloud ve ReadAloud.ahk ile okutalım:
-                //document.execCommand("copy");
+            // Panoya kopyalayıp; Android de Tasker ile Windows da Firefox >> ReadAloud ve ReadAloud.ahk ile okutalım:
+            //document.execCommand("copy");
 
-                if ( clickedElement.text().length > 1000 ) {
-                    console.log("Tıklanan Öğenin Karakter Sayısı (" + clickedElement.text().length + ") 1000'den FAZLA. ÇEVİRİ İPTAL...");
-                    blink_text(clickedElement);
-                    return;
-                } else {
-                    console.log("Tıklanan Öğenin Karakter Sayısı:");
-                    console.log(clickedElement.text().length);
-                    console.log("----------- Tıklanan Metin-----------\n" + clickedElement.text() + "\n-------------------------------------");
+            if ( clickedElement.text().length > 1000 ) {
+                console.log("Tıklanan Öğenin Karakter Sayısı (" + clickedElement.text().length + ") 1000'den FAZLA. ÇEVİRİ İPTAL...");
+                blink_text(clickedElement);
+                return;
+            } else {
+                console.log("Tıklanan Öğenin Karakter Sayısı:");
+                console.log(clickedElement.text().length);
+                console.log("----------- Tıklanan Metin-----------\n" + clickedElement.text() + "\n-------------------------------------");
+            }
+            //-------------------------------------------
+
+            var clickedElementBROS = clickedElement.nextAll().not('.cevrilmisMetin');
+
+
+            console.log("Tıklanan Öğeden Sonraki KARDEŞ Sayısı:");
+            console.log(clickedElementBROS.length);
+
+            var totalBROSCharCount = 0;
+            var i = 0;
+
+            var to500CharCount = setInterval(function () {
+
+                if (clickedElementBROS.eq(i).hasClass('cevrilmisMetin') || clickedElementBROS.eq(i).children().hasClass('cevrilmisMetin')) {
+                    clearInterval(to500CharCount);
+                    metniCeviriyeHazirla();
+                    metniCevir();
                 }
-                //-------------------------------------------
 
-                var clickedElementBROS = clickedElement.nextAll().not('.cevrilmisMetin');
-                console.log("Tıklanan Öğeden Sonraki KARDEŞ Sayısı:");
-                console.log(clickedElementBROS.length);
+                else if (clickedElementBROS.length == 0) { // Tıklanan Öğeden Sonraki KARDEŞ Sayısı "0" ise;
+                    clearInterval(to500CharCount);
+                    console.log("Kardeş Öğe YOK...");
+                    metniCeviriyeHazirla();
+                    metniCevir();
 
-                var totalBROSCharCount = 0;
-                var i = 0;
+                } else { // Tıklanan Öğeden Sonraki KARDEŞ Sayısı "0" değilse;
 
-                var to500CharCount = setInterval(function () {
-
-                    if (clickedElementBROS.eq(i).hasClass('cevrilmisMetin') || clickedElementBROS.eq(i).children().hasClass('cevrilmisMetin')) {
+                    if (totalBROSCharCount > 300) {
                         clearInterval(to500CharCount);
-                        metniCeviriyeHazirla();
-                        metniCevir();
-                    }
-
-                    else if (clickedElementBROS.length == 0) { // Tıklanan Öğeden Sonraki KARDEŞ Sayısı "0" ise;
-                        clearInterval(to500CharCount);
-                        console.log("Kardeş Öğe YOK...");
+                        console.log("Toplam Kardeş Karakter Sayısı: " + totalBROSCharCount + " oldu. Bu gıdaa yetee!..");
                         metniCeviriyeHazirla();
                         metniCevir();
 
-                    } else { // Tıklanan Öğeden Sonraki KARDEŞ Sayısı "0" değilse;
 
-                        if (totalBROSCharCount > 300) {
+                    } else {
+
+                        if (clickedElementBROS.eq(i).text().length == 0) { // Kardeş Karakter Sayısı "0" ise ÇIK...
                             clearInterval(to500CharCount);
-                            console.log("Toplam Kardeş Karakter Sayısı: " + totalBROSCharCount + " oldu. Bu gıdaa yetee!..");
+
+                            console.log((i+1) + ". Kardeş Karakter Sayısı: " + clickedElementBROS.eq(i).text().length);
+                            console.log("Kardeş Karakter Sayısı '0', ÇIKIYORUZ...");
+
                             metniCeviriyeHazirla();
                             metniCevir();
 
-
                         } else {
 
-                            if (clickedElementBROS.eq(i).text().length == 0) { // Kardeş Karakter Sayısı "0" ise ÇIK...
+                            console.log((i+1) + ". Kardeş: " + clickedElementBROS.eq(i).prop("tagName"));
+                            console.log((i+1) + ". Kardeş Karakter Sayısı: " + clickedElementBROS.eq(i).text().length);
+                            console.log((i+1) + ". Kardeş Metni----------------------\n" + clickedElementBROS.eq(i).text() + "\n-------------------------------------");
+
+
+                            //**************
+                            if ( clickedElementBROS.eq(i).text().length > 300 ) { // Kardeş Karakter Sayısı 300'den FAZLA ise;
+                                console.log((i+1) + ". Kardeş Karakter Sayısı (" + clickedElementBROS.eq(i).text().length + ") 300'den FAZLA. ÇEVİRİ İPTAL...");
                                 clearInterval(to500CharCount);
-
-                                console.log((i+1) + ". Kardeş Karakter Sayısı: " + clickedElementBROS.eq(i).text().length);
-                                console.log("Kardeş Karakter Sayısı '0', ÇIKIYORUZ...");
-
-                                metniCeviriyeHazirla();
-                                metniCevir();
-
+                            metniCeviriyeHazirla();
+                            metniCevir();
                             } else {
-
-                                console.log((i+1) + ". Kardeş: " + clickedElementBROS.eq(i).prop("tagName"));
-                                console.log((i+1) + ". Kardeş Karakter Sayısı: " + clickedElementBROS.eq(i).text().length);
-                                console.log((i+1) + ". Kardeş Metni----------------------\n" + clickedElementBROS.eq(i).text() + "\n-------------------------------------");
-
                                 totalBROSCharCount += clickedElementBROS.eq(i).text().length;
                                 console.log("TOPLAM KARDEŞ KARAKTER SAYISI: " + totalBROSCharCount + " / 300");
 
@@ -328,222 +327,232 @@ var JQuery306 = jQuery.noConflict(true);
                             }
 
                         }
+
                     }
-                    i++;
-
-                }, 10);
-
-
-                clickedElement.addClass("tikladigimizMetninKardesleri");
-                clickedElement.css('color','lime');
+                }
+                i++;
 
 
+                $(".tikladigimizMetninKardesleri").each(function(index,eleman) {
+                    if ( $(eleman).is("ul, ol, dl") ) {
+                        $(eleman).removeClass('tikladigimizMetninKardesleri').addClass('kardeslerinBabasi').css('color','orange');;
+                        $(eleman).children().addClass('tikladigimizMetninKardesleri');
+                    }
+                });
 
 
-                //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-                function metniCeviriyeHazirla() {
-
-                    $(".tikladigimizMetninKardesleri").not('.cevrilmisMetin').each(function(index,eleman) {
+            }, 10);
 
 
-                        function uniqueID() {
-                            return Math.floor(Math.random() * Date.now());
+            clickedElement.addClass("tikladigimizMetninKardesleri");
+            clickedElement.css('color','lime');
+
+
+
+            //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+            function metniCeviriyeHazirla() {
+
+                $(".tikladigimizMetninKardesleri").not('.cevrilmisMetin').each(function(index,eleman) {
+
+
+                    function uniqueID() {
+                        return Math.floor(Math.random() * Date.now());
+                    }
+                    // console.log(uniqueID());
+
+                    var clickedElementID = "cevrilmisMetin-" + uniqueID();
+
+                    // Seçili metnimize bir sınıf atayalım:
+                    $(eleman).addClass("cevrilmisMetin").attr('id', clickedElementID);
+
+
+                    var clickedElementCURRENT = $("*[id='" + clickedElementID + "']");
+                    //console.log(clickedElementCURRENT.text());
+
+
+                    // Metnimizi cümlelere ayıralım:
+                    var str = $(eleman).text();
+                    // console.log(str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|"));
+
+
+                    var clickedElementDizi = str.replace(/(?![A-Z]..?\.)(?![A-Z]?\.)(\b\S+[.?!:]["'’]?)\s/g, "$1|").split("|");
+                    // var klonDizi = str.replace(/(?!Mrs?\.|Jr\.|Dr\.|Sr\.|Prof\.)(\b\S+[.?!]["']?)\s/g, "$1|").split("|");
+                    // var klonDizi = str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|");
+
+
+                    var clickedElementDiziParcali;
+                    // Cümleleri span a çevirip alt alta yazdıralım ve çeviri için klonlayalım:
+                    clickedElementDizi.forEach(function (item) {
+                        // do something with `item`
+                        //console.log(item);
+                        clickedElementDiziParcali += "<span class='clickedElementDiziCumle'>" + item + "</span></br>";
+                    });
+
+                    // ilk başta gelen "undefined" ı (9 karakter uzunluğunda) silelim:
+                    clickedElementDiziParcali = clickedElementDiziParcali.slice(9);
+                    //console.log(klonDiziParcali);
+
+                    // Klon metnimizi <span> şeklinde cümlelere ayrılmış hali ile değiştirelim:
+                    clickedElementCURRENT.html(clickedElementDiziParcali);
+
+
+                    // AYRILMIŞ MEVCUT CÜMLEMİZ/CÜMLELERİMİZ:
+                    var clickedElementCURRENT_CumleSPAN = clickedElementCURRENT.find("span.clickedElementDiziCumle");
+
+
+
+                    clickedElementCURRENT_CumleSPAN.each(function () {
+                        $(this).clone().addClass('clickedElementDiziCeviri').insertAfter($(this).next()); // Next yani <br> den sonraya atalım klonu
+                    });
+
+
+
+                    // AYRILMIŞ MEVCUT KLON/ÇEVRİLECEK CÜMLEMİZ/CÜMLELERİMİZ:
+                    var clickedElementCURRENT_CeviriSPAN = clickedElementCURRENT.find("span.clickedElementDiziCeviri");
+
+                    clickedElementCURRENT_CeviriSPAN.removeClass('clickedElementDiziCumle'); //.css('color','limegreen').css('display','inline-block').css('margin-top','10px');
+
+                    // Çeviri cümlesinden/cümlelerinden sonra <br> ekleyelim:
+                    $("</br>").insertAfter(clickedElementCURRENT_CeviriSPAN);
+
+
+
+                    blink_text(clickedElementCURRENT_CumleSPAN);
+                    //clickedElementCURRENT_CumleSPAN.animate({color: 'tomato'}, 1000);
+                    clickedElementCURRENT_CumleSPAN.addClass('clickedElementDiziCumleClicked');
+                    setTimeout(function () {
+                        clickedElementCURRENT_CumleSPAN.removeClass('clickedElementDiziCumleClicked');
+                    }, 400);
+
+                    $(".cevrilmisMetin").removeClass('tikladigimizMetninKardesleri');
+
+
+                });
+
+            }
+            //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+
+
+            //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+            function metniCevir() {
+
+                // Nihayet çevirimizi Google Translate e yaptıralım:
+
+                var apikey = sessionStorage.getItem("gtAPIkey");
+
+                // Yukarıda tanımladığımız "jQuery Google Translate API 2.0 plugin" için parametrelerimizi tanımlayalım, API key imizi girelim:
+                $.translate = {
+                    // key : 'Enter google translate API key here',
+                    key: apikey,
+                    source: 'en'
+                };
+
+
+                $.translate.onComplete = function () {
+
+                    $("span.clickedElementDiziCeviri").addClass('clickedElementDiziCevrildi').removeClass('clickedElementDiziCeviri');
+
+                    $("</br>").insertAfter($("span.clickedElementDiziCumle"));
+
+                    // Son çeviri cümlesinden sonraki <br> yi silelim, yoksa ara çok açılıyor!
+                    $("span.clickedElementDiziCevrildi").last().next('br').remove();
+
+                    // Çevrilen ilk cümleyi önceki çevirilerden ayırmak için üstüne çizgi çekelim:
+                    $("span.clickedElementDiziCumle").first().addClass('ilkCumleTranslated');
+                    $("span.ilkCumleTranslated").css('border-top','3px solid #710000').css('padding-top','6px');
+
+
+                    $("span.clickedElementDiziCumle").addClass('clickedElementDiziCumleTranslated').removeClass('clickedElementDiziCumle');
+
+
+                    // clickedElementCURRENT_CumleSPAN.first().get(0).scrollIntoView({
+                    //     behavior: 'instant',
+                    //     block: 'center'
+                    // });
+
+
+                    // ELLLO.org gibi sitelerde içi boş (sadece tab ve boşluk var) çıkan span elemanlarını çeviriden sonra sildirelim:
+                    // ---------------------------------------------------------------------------------------------------------------
+                    var regex_ELLLO = new RegExp(/^\t*\s*$/);
+                    $("span.clickedElementDiziCumleTranslated, span.clickedElementDiziCevrildi").each(function () {
+                        if ( regex_ELLLO.test($(this).html())) {
+                            console.log("span BOŞ");
+                            $(this).prev("br").remove();
+                            $(this).remove();
                         }
-                        // console.log(uniqueID());
-
-                        var clickedElementID = "cevrilmisMetin-" + uniqueID();
-
-                        // Seçili metnimize bir sınıf atayalım:
-                        $(eleman).addClass("cevrilmisMetin").attr('id', clickedElementID);
-
-
-                        var clickedElementCURRENT = $("*[id='" + clickedElementID + "']");
-                        //console.log(clickedElementCURRENT.text());
-
-
-                        // Metnimizi cümlelere ayıralım:
-                        var str = $(eleman).text();
-                        // console.log(str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|"));
-
-
-                        var clickedElementDizi = str.replace(/(?![A-Z]..?\.)(?![A-Z]?\.)(\b\S+[.?!:]["'’]?)\s/g, "$1|").split("|");
-                        // var klonDizi = str.replace(/(?!Mrs?\.|Jr\.|Dr\.|Sr\.|Prof\.)(\b\S+[.?!]["']?)\s/g, "$1|").split("|");
-                        // var klonDizi = str.replace(/([.?!])\s*(?=[a-z]|[A-Z])/g, "$1|").split("|");
-
-
-                        var clickedElementDiziParcali;
-                        // Cümleleri span a çevirip alt alta yazdıralım ve çeviri için klonlayalım:
-                        clickedElementDizi.forEach(function (item) {
-                            // do something with `item`
-                            //console.log(item);
-                            clickedElementDiziParcali += "<span class='clickedElementDiziCumle'>" + item + "</span></br>";
-                        });
-
-                        // ilk başta gelen "undefined" ı (9 karakter uzunluğunda) silelim:
-                        clickedElementDiziParcali = clickedElementDiziParcali.slice(9);
-                        //console.log(klonDiziParcali);
-
-                        // Klon metnimizi <span> şeklinde cümlelere ayrılmış hali ile değiştirelim:
-                        clickedElementCURRENT.html(clickedElementDiziParcali);
-
-
-                        // AYRILMIŞ MEVCUT CÜMLEMİZ/CÜMLELERİMİZ:
-                        var clickedElementCURRENT_CumleSPAN = clickedElementCURRENT.find("span.clickedElementDiziCumle");
-
-
-
-                        clickedElementCURRENT_CumleSPAN.each(function () {
-                            $(this).clone().addClass('clickedElementDiziCeviri').insertAfter($(this).next()); // Next yani <br> den sonraya atalım klonu
-                        });
-
-
-
-                        // AYRILMIŞ MEVCUT KLON/ÇEVRİLECEK CÜMLEMİZ/CÜMLELERİMİZ:
-                        var clickedElementCURRENT_CeviriSPAN = clickedElementCURRENT.find("span.clickedElementDiziCeviri");
-
-                        clickedElementCURRENT_CeviriSPAN.removeClass('clickedElementDiziCumle'); //.css('color','limegreen').css('display','inline-block').css('margin-top','10px');
-
-                        // Çeviri cümlesinden/cümlelerinden sonra <br> ekleyelim:
-                        $("</br>").insertAfter(clickedElementCURRENT_CeviriSPAN);
-
-
-
-                        blink_text(clickedElementCURRENT_CumleSPAN);
-                        //clickedElementCURRENT_CumleSPAN.animate({color: 'tomato'}, 1000);
-                        clickedElementCURRENT_CumleSPAN.addClass('clickedElementDiziCumleClicked');
-                        setTimeout(function () {
-                            clickedElementCURRENT_CumleSPAN.removeClass('clickedElementDiziCumleClicked');
-                        }, 400);
-
-                        $(".cevrilmisMetin").removeClass('tikladigimizMetninKardesleri');
-
-
                     });
+                    // ---------------------------------------------------------------------------------------------------------------
+
+                    // quodb.com da altyazıların başındaki zaman bilgisini çeviriden sonra sildirelim:
+                    // ---------------------------------------------------------------------------------------------------------------
+                    $("span.clickedElementDiziCumleTranslated, span.clickedElementDiziCevrildi").html(function() {
+                        return this.innerHTML.replace(/\d\d:\d\d:\d\d/, "");
+                    });
+                    $("span.clickedElementDiziCumleTranslated, span.clickedElementDiziCevrildi").css('font-weight','400');
+                    // ---------------------------------------------------------------------------------------------------------------
+
 
                 }
-                //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+
+                $("span.clickedElementDiziCeviri").translate({
+                    // source: 'de', // You can override source
+                    target: 'tr',
+                    progressIndicator: '' // You can override progressIndicator
+                    // progressIndicator: '<span class="my-indicator"></span>' // You can override progressIndicator
+                });
+
+            }
+            //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
+        } // ELSE - ÇEVİRİYE DEVAM
 
-                //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-                function metniCevir() {
-
-                    // Nihayet çevirimizi Google Translate e yaptıralım:
-
-                    var apikey = sessionStorage.getItem("gtAPIkey");
-
-                    // Yukarıda tanımladığımız "jQuery Google Translate API 2.0 plugin" için parametrelerimizi tanımlayalım, API key imizi girelim:
-                    $.translate = {
-                        // key : 'Enter google translate API key here',
-                        key: apikey,
-                        source: 'en'
-                    };
-
-
-                    $.translate.onComplete = function () {
-
-                        $("span.clickedElementDiziCeviri").addClass('clickedElementDiziCevrildi').removeClass('clickedElementDiziCeviri');
-
-                        $("</br>").insertAfter($("span.clickedElementDiziCumle"));
-
-                        // Son çeviri cümlesinden sonraki <br> yi silelim, yoksa ara çok açılıyor!
-                        $("span.clickedElementDiziCevrildi").last().next('br').remove();
-
-                        // Çevrilen ilk cümleyi önceki çevirilerden ayırmak için üstüne çizgi çekelim:
-                        $("span.clickedElementDiziCumle").first().addClass('ilkCumleTranslated');
-                        $("span.ilkCumleTranslated").css('border-top','3px solid #710000').css('padding-top','6px');
-
-
-                        $("span.clickedElementDiziCumle").addClass('clickedElementDiziCumleTranslated').removeClass('clickedElementDiziCumle');
-
-
-                        // clickedElementCURRENT_CumleSPAN.first().get(0).scrollIntoView({
-                        //     behavior: 'instant',
-                        //     block: 'center'
-                        // });
-
-
-                        // ELLLO.org gibi sitelerde içi boş (sadece tab ve boşluk var) çıkan span elemanlarını çeviriden sonra sildirelim:
-                        // ---------------------------------------------------------------------------------------------------------------
-                        var regex_ELLLO = new RegExp(/^\t*\s*$/);
-                        $("span.clickedElementDiziCumleTranslated, span.clickedElementDiziCevrildi").each(function () {
-                            if ( regex_ELLLO.test($(this).html())) {
-                                console.log("span BOŞ");
-                                $(this).prev("br").remove();
-                                $(this).remove();
-                            }
-                        });
-                        // ---------------------------------------------------------------------------------------------------------------
-
-                        // quodb.com da altyazıların başındaki zaman bilgisini çeviriden sonra sildirelim:
-                        // ---------------------------------------------------------------------------------------------------------------
-                        $("span.clickedElementDiziCumleTranslated, span.clickedElementDiziCevrildi").html(function() {
-                            return this.innerHTML.replace(/\d\d:\d\d:\d\d/, "");
-                        });
-                        $("span.clickedElementDiziCumleTranslated, span.clickedElementDiziCevrildi").css('font-weight','400');
-                        // ---------------------------------------------------------------------------------------------------------------
-
-
-                    }
-
-                    $("span.clickedElementDiziCeviri").translate({
-                        // source: 'de', // You can override source
-                        target: 'tr',
-                        progressIndicator: '' // You can override progressIndicator
-                        // progressIndicator: '<span class="my-indicator"></span>' // You can override progressIndicator
-                    });
-
-                }
-                //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-
-            } // ELSE - ÇEVİRİYE DEVAM
-
-        }); // $("body").on("click", function (x) { - SON
-
-
-        //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-
-
-    }); // $(document).ready - SON
+    }); // $("body").on("click", function (x) { - SON
 
 
     //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
 
+}); // $(document).ready - SON
+
+
+//████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
 
 
-    // JQuery e selectText() fonksiyonu ekliyoruz. Bu Parent text i seçmemize yarıyor...
-    JQuery306.fn.selectText = function () {
-        this.find('input').each(function () {
-            if ($(this).prev().length == 0 || !$(this).prev().hasClass('p_copy')) {
-                $('<p class="p_copy" style="position: absolute; z-index: -1;"></p>').insertBefore($(this));
-            }
-            $(this).prev().html($(this).val());
-        });
-        var doc = document;
-        var element = this[0];
-        var range;
-        // console.log(this, element);
-        if (doc.body.createTextRange) {
-            range = document.body.createTextRange();
-            range.moveToElementText(element);
-            range.select();
-        } else if (window.getSelection) {
-            var selection = window.getSelection();
-            range = document.createRange();
-            range.selectNodeContents(element);
-            selection.removeAllRanges();
-            selection.addRange(range);
+
+
+
+// JQuery e selectText() fonksiyonu ekliyoruz. Bu Parent text i seçmemize yarıyor...
+jQuery.fn.selectText = function () {
+    this.find('input').each(function () {
+        if ($(this).prev().length == 0 || !$(this).prev().hasClass('p_copy')) {
+            $('<p class="p_copy" style="position: absolute; z-index: -1;"></p>').insertBefore($(this));
         }
-    };
+        $(this).prev().html($(this).val());
+    });
+    var doc = document;
+    var element = this[0];
+    var range;
+    // console.log(this, element);
+    if (doc.body.createTextRange) {
+        range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+};
 
-    /*
+/*
     function copyToClipboard(element) {
         var $temp = $("<input>");
         $("body").append($temp);
@@ -553,28 +562,10 @@ var JQuery306 = jQuery.noConflict(true);
     }
     */
 
-    function blink_text(element) {
-        $(element).fadeOut(200);
-        $(element).fadeIn(200);
-    }
-
-
-
-
-
-
-    // code that needs 1.4.2 goes here
-}(JQuery306));
-
-
-
-
-
-
-
-
-
-
+function blink_text(element) {
+    $(element).fadeOut(200);
+    $(element).fadeIn(200);
+}
 
 
 //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
@@ -736,10 +727,9 @@ var JQuery306 = jQuery.noConflict(true);
         });
     };
 
-}(JQuery306, window));
+}(jQuery, window));
 //----------------------------------------------
 
 //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
 
 

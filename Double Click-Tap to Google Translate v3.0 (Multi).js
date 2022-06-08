@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v3 (Multi)
 // @namespace    http://tampermonkey.net/
-// @version      3.04
+// @version      3.03
 // @description  try to take over the world!
 // @author       You
 

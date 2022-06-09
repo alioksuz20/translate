@@ -136,9 +136,9 @@
         ]
       }
     ],
-    "updateDate": 1654776651773,
+    "updateDate": 1654783002377,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1654776651773,
+    "_rev": 1654783002377,
     "id": 7
   },
   {
@@ -165,16 +165,17 @@
     "name": "Double Click/Tap to Google Translate v2 - WINDOWS",
     "sections": [
       {
-        "code": "\n\nspan.clickedElementDiziCumle::selection,\nspan.clickedElementDiziCumle,\nspan.clickedElementDiziCeviri,\nspan.clickedElementDiziCevrildi {\n    opacity: .85; /* for Windows */\n}",
+        "code": "\n\nspan.clickedElementDiziCumle::selection,\nspan.clickedElementDiziCumle,\nspan.clickedElementDiziCumleTranslated::selection,\nspan.clickedElementDiziCumleTranslated,\nspan.clickedElementDiziCumleClicked,\nspan.clickedElementDiziCeviri,\nspan.clickedElementDiziCevrildi {\n    opacity: .85; /* for Windows */\n}",
         "urlPrefixes": [
           "http"
         ]
       }
     ],
-    "updateDate": 1651043188259,
+    "updateDate": 1654783221542,
     "_id": "c1f183a1-af5f-4a18-a2f1-4b09e04aef3e",
-    "_rev": 1654494644904,
-    "id": 9
+    "_rev": 1654783221542,
+    "id": 9,
+    "enabled": true
   },
   {
     "installDate": 1651443985850,

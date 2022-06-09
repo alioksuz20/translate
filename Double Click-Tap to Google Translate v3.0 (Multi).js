@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v3 (Multi)
 // @namespace    http://tampermonkey.net/
-// @version      3.03
+// @version      3.05
 // @description  try to take over the world!
 // @author       You
 
@@ -16,16 +16,16 @@
 // @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
-// @grant        none
+
+/// @grant        none
+
 // ==/UserScript==
 
 //**********************************************************************
 // var jq = document.createElement('script');
 // jq.src = "//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
 // document.getElementsByTagName('head')[0].appendChild(jq);
-// jQuery.noConflict();
 //**********************************************************************
-
 
 $(document).ready(function () {
 
@@ -45,6 +45,7 @@ $(document).ready(function () {
 
     // Haber/makale içindeki resimlerin click olayını kaldırıp, "drag" ile resmi silme fonksiyonu tanımlayalım:
     setTimeout(function () {
+
 
         // $("img").contents().unwrap();
 
@@ -184,13 +185,17 @@ $(document).ready(function () {
             cevrilmeyeceklerMesaj();
             console.log(' is("button") ');
         }
+        else if ( $(x.target).is("input") ) {
+            cevrilmeyeceklerMesaj();
+            console.log(' is("input") ');
+        }
+        else if ( $(x.target).is("[href]") ) { // The [attr] syntax is the CSS selector for an element with an attribute attr, and .is() checks if the element it is called on matches the given CSS selector.
+            cevrilmeyeceklerMesaj();
+            console.log(' is("[href]") ');
+        }
         else if ( $(x.target).is("a") ) {
             cevrilmeyeceklerMesaj();
             console.log(' is("a") ');
-        }
-        else if ( $(x.target).is("a span") ) {
-            cevrilmeyeceklerMesaj();
-            console.log(' is("a span") ');
         }
         else if ( $(x.target).is("img") ) {
             cevrilmeyeceklerMesaj();
@@ -316,8 +321,8 @@ $(document).ready(function () {
                             if ( clickedElementBROS.eq(i).text().length > 300 ) { // Kardeş Karakter Sayısı 300'den FAZLA ise;
                                 console.log((i+1) + ". Kardeş Karakter Sayısı (" + clickedElementBROS.eq(i).text().length + ") 300'den FAZLA. ÇEVİRİ İPTAL...");
                                 clearInterval(to500CharCount);
-                            metniCeviriyeHazirla();
-                            metniCevir();
+                                metniCeviriyeHazirla();
+                                metniCevir();
                             } else {
                                 totalBROSCharCount += clickedElementBROS.eq(i).text().length;
                                 console.log("TOPLAM KARDEŞ KARAKTER SAYISI: " + totalBROSCharCount + " / 300");
@@ -518,7 +523,6 @@ $(document).ready(function () {
 
 
 }); // $(document).ready - SON
-
 
 //████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 

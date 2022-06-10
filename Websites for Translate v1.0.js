@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Websites for Translate
 // @namespace    http://tampermonkey.net/
-// @version      1.14
+// @version      1.15
 // @description  MSN.com, Medium.com
 // @author       You
 
@@ -15,6 +15,7 @@
 // @run-at       document-end
 
 // @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Websites%20for%20Translate%20v1.0.js
+// @downloadURL  https://raw.githubusercontent.com/alioksuz20/translate/main/Websites%20for%20Translate%20v1.0.js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 
@@ -305,7 +306,10 @@ $(document).ready(function() {
     quodb_com();
 
     $("body").on('click', "div.pagination ul#pages_list a", function () {
-        quodb_com();
+        setTimeout(function () {
+            quodb_com();
+            $(window).scrollTop(0);
+        }, 500);
     });
 
 

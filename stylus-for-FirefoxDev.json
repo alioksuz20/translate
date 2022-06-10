@@ -130,15 +130,15 @@
     "name": "Double Click/Tap to Google Translate v2",
     "sections": [
       {
-        "code": "\n::selection,\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\n\nspan.clickedElementDiziCumleTranslated::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumleTranslated {\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCeviri {\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\nspan.clickedElementDiziCevrildi {\n    color:  hsl(200, 35%, 60%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\n\n",
+        "code": "::selection,\nspan.clickedElementDiziCumle::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumle {\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumleTranslated::selection {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumleTranslated {\n    color:  hsl(39, 37%, 57%) !important;\n    display: inline-block;\n    cursor: pointer;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCumleClicked {\n    color:  tomato !important;\n    background-color: transparent !important;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCeviri {\n    color:  hsl(91, 35%, 50%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\nspan.clickedElementDiziCevrildi {\n    color:  hsl(200, 35%, 60%) !important;\n    display: inline-block;\n    margin-bottom: 10px;\n    line-height: 1.4em;\n}\nspan.ilkCumleTranslated {\n    border-top: 3px solid #800000 !important;\n    padding-top: 6px;    \n}\n",
         "urlPrefixes": [
           "http"
         ]
       }
     ],
-    "updateDate": 1654783002377,
+    "updateDate": 1654838499846,
     "_id": "b4dd7dce-b6ad-4064-ba86-b90e8989c6e5",
-    "_rev": 1654783002377,
+    "_rev": 1654838499847,
     "id": 7
   },
   {
@@ -147,17 +147,18 @@
     "name": "Websites for Translate",
     "sections": [
       {
-        "code": "/*██████   MSN.com   ██████*/\n\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'] {\n    display: none !important;\n}\ndiv.grid-DS-EntryPoint1-1,\ndiv.article-video-slot,\nmsn-article-image,\nimg {\n    /* filter: sepia(100%) grayscale(90%)!important; */\n    opacity: .7 !important;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\ndiv.spacerpromo {\n    display: none;\n}\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio{\n    width: -moz-available !important;   \n    z-index: 9999 !important; \n    left: 0 !important;\n}\n\naudio {\n    width: -moz-available !important;\n    background-color: black !important;\n    opacity: .6 !important;\n}\n\ndiv.audio {   \n    background-color: black;\n    opacity: 1 !important;\n}\n\ndiv.audio_play-pause {\n    position: fixed;\n\ttop: 270px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n}\ndiv.audio_play-pause.play {\n    background: url(\"https://img.icons8.com/cotton/344/circled-play.png\") no-repeat;\n    background-size: contain;\n}\ndiv.audio_play-pause.pause {\n    background: url(https://img.icons8.com/cotton/344/circled-pause.png) no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_backward {\n    position: fixed;\n\ttop: 320px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-left--v1.png\") no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_forward {\n    position: fixed;\n\ttop: 370px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-right--v1.png\") no-repeat;\n    background-size: contain;\n}\n\n",
+        "code": "/*██████   MSN.com   ██████*/\n\ndiv.videojsplayer,\nsection.Modelinfo,\ndiv[class^='article_paddle-DS-EntryPoint'],\ndiv[class^='viewsInteractionsCenter'] {\n    display: none !important;\n}\ndiv.grid-DS-EntryPoint1-1,\ndiv.article-video-slot,\nmsn-article-image,\nimg {\n    /* filter: sepia(100%) grayscale(90%)!important; */\n    opacity: .7 !important;\n}\np > a {\n    opacity: .6;\n}\n\n\n/*██████   Medium.com   ██████*/\n\n\n\n\n/*██████   QuoDB.com   ██████*/\n\ndiv.launcher-button {\n    display: none !important;\n}\n\n\n\n/*██████   CNBC.com   ██████*/\n\ndiv.InlineVideo-wrapper {\n    display: none !important;\n}\nspan, p {\n    line-height: 1.4em;\n}\n\n\n/*██████   ELLLO.org   ██████*/\n\ndiv.spacerpromo {\n    display: none;\n}\ndiv.tabcontents {\n    width: 109%;\n    left: -21px;\n    position: relative;\n}\ndiv.tabcontents div#view1 p {\n    padding-right: 20px !important;\n}\ndiv.tabcontents div#view2 p {\n    padding-left: 10px !important;\n    padding-right: 25px !important;    \n}\n\ndiv.audio{\n    width: -moz-available !important;   \n    z-index: 9999 !important; \n    left: 0 !important;\n}\n\naudio {\n    width: -moz-available !important;\n    background-color: black !important;\n    opacity: .6 !important;\n}\n\ndiv.audio {   \n    background-color: black;\n    opacity: 1 !important;\n}\n\ndiv.audio_play-pause {\n    position: fixed;\n\ttop: 270px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n}\ndiv.audio_play-pause.play {\n    background: url(\"https://img.icons8.com/cotton/344/circled-play.png\") no-repeat;\n    background-size: contain;\n}\ndiv.audio_play-pause.pause {\n    background: url(https://img.icons8.com/cotton/344/circled-pause.png) no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_backward {\n    position: fixed;\n\ttop: 320px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-left--v1.png\") no-repeat;\n    background-size: contain;\n}\n\ndiv.audio_forward {\n    position: fixed;\n\ttop: 370px;\n\tright: 10px;\n    width: 40px;\n    height: 40px;\n    cursor: pointer;\n    filter: saturate(0%) brightness(75%);\n    background: url(\"https://img.icons8.com/cotton/344/circled-chevron-right--v1.png\") no-repeat;\n    background-size: contain;\n}\n\n",
         "domains": [
           "msn.com",
           "cnbc.com",
-          "elllo.org"
+          "elllo.org",
+          "quodb.com"
         ]
       }
     ],
-    "updateDate": 1654506724934,
+    "updateDate": 1654840840073,
     "_id": "8fdb226a-1915-4a26-a9d2-d8f5918090ad",
-    "_rev": 1654506724934,
+    "_rev": 1654840840073,
     "id": 8
   },
   {

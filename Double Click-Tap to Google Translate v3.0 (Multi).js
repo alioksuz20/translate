@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Double Click/Tap to Google Translate v3 (Multi)
 // @namespace    http://tampermonkey.net/
-// @version      3.05
+// @version      3.06
 // @description  try to take over the world!
 // @author       You
 
@@ -13,7 +13,8 @@
 
 // @require      https://ngryman.sh/jquery.finger/libs/jquery.finger.min.js
 
-// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v2.0.js
+// @updateURL    https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v3.0%20(Multi).js
+// @downloadURL  https://raw.githubusercontent.com/alioksuz20/translate/main/Double%20Click-Tap%20to%20Google%20Translate%20v3.0%20(Multi).js
 
 // @icon         http://ssl.gstatic.com/translate/favicon.ico
 
@@ -467,8 +468,6 @@ $(document).ready(function () {
 
                     // Çevrilen ilk cümleyi önceki çevirilerden ayırmak için üstüne çizgi çekelim:
                     $("span.clickedElementDiziCumle").first().addClass('ilkCumleTranslated');
-                    $("span.ilkCumleTranslated").css('border-top','3px solid #710000').css('padding-top','6px');
-
 
                     $("span.clickedElementDiziCumle").addClass('clickedElementDiziCumleTranslated').removeClass('clickedElementDiziCumle');
 

@@ -39,5 +39,8 @@ elllo.org##.aside
 ! 2022-05-29 https://www.npr.org
 ||npr.org^$script,1p
 
-
+! 2022-06-02 https://www.mozilla.org
+||www.mozilla.org/media/js/sentry.1da843ae9d4c.js$script,domain=www.mozilla.org
+||www.mozorg.moz.works^$script,domain=www.mozilla.org
+||www.mozilla.org/media/js/*$script,domain=www.mozilla.org
 
